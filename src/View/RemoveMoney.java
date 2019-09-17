@@ -6,6 +6,8 @@
 package View;
 
 import Model.AppManager;
+import View.FourPlayer.PlayersWindowFour;
+import View.ThreePlayer.PlayersWindowThree;
 import View.TwoPlayer.PlayersWindow;
 import javax.swing.JOptionPane;
 
@@ -16,14 +18,36 @@ import javax.swing.JOptionPane;
 public class RemoveMoney extends javax.swing.JDialog {
     private int player;
     private PlayersWindow window;
+    private PlayersWindowThree windowThree;
+    private int numberOfPlayers;
+    private PlayersWindowFour windowFour;
     /**
      * Creates new form RemoveMoney
      */
-    public RemoveMoney(java.awt.Frame parent, boolean modal,int player,PlayersWindow window) {
+    public RemoveMoney(java.awt.Frame parent, boolean modal,int player,PlayersWindow window,int numberOfPlayers) {
         super(parent, modal);
         initComponents();
         this.player=player;
         this.window=window;
+        this.numberOfPlayers = numberOfPlayers;
+        init();
+    }
+    
+    public RemoveMoney(java.awt.Frame parent, boolean modal,int player,PlayersWindowThree window,int numberOfPlayers) {
+        super(parent, modal);
+        initComponents();
+        this.player=player;
+        this.windowThree=window;
+        this.numberOfPlayers = numberOfPlayers;
+        init();
+    }
+    
+    public RemoveMoney(java.awt.Frame parent, boolean modal,int player,PlayersWindowFour window,int numberOfPlayers) {
+        super(parent, modal);
+        initComponents();
+        this.player=player;
+        this.windowFour=window;
+        this.numberOfPlayers = numberOfPlayers;
         init();
     }
 
@@ -78,9 +102,9 @@ public class RemoveMoney extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PlayerToRemoveMoney)
-                    .addComponent(MoneyToRemove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(MoneyToRemove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PlayerToRemoveMoney))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cancel)
@@ -93,61 +117,148 @@ public class RemoveMoney extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String insertMoney = MoneyToRemove.getText();
+        switch(numberOfPlayers){
+            case 2:
+                try{
+                    int money = Integer.parseInt(insertMoney);
 
-        try{
-            int money = Integer.parseInt(insertMoney);
-
-            if(money < 0){
-                showError(3);
-            }else{
-                int actualMoney = 0;
-
-                switch(player){
-                    case 1:
-                    actualMoney = AppManager.INSTANCE.getPlayers(0).getMoney() - money;
-
-                    if(actualMoney < 0){
-                        showError(4);
+                    if(money < 0){
+                        showError(3);
                     }else{
-                        AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
-                        window.setCurrentMoneyPLayer1();
-                    }
-                    break;
-                    case 2:
-                    actualMoney = AppManager.INSTANCE.getPlayers(1).getMoney() - money;
+                        int actualMoney = 0;
 
-                    if(actualMoney < 0){
-                        showError(4);
-                    }else{
-                        AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
-                        window.setCurrentMoneyPLayer2();
-                    }
-                    break;
-                    case 3:
-                    actualMoney = AppManager.INSTANCE.getPlayers(2).getMoney() - money;
+                        switch(player){
+                            case 1:
+                            actualMoney = AppManager.INSTANCE.getPlayers(0).getMoney() - money;
 
-                    if(actualMoney < 0){
-                        showError(4);
-                    }else{
-                        AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
-                    }
-                    break;
-                    case 4:
-                    actualMoney = AppManager.INSTANCE.getPlayers(3).getMoney() - money;
+                            if(actualMoney < 0){
+                                showError(4);
+                            }else{
+                                AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
+                                window.setCurrentMoneyPLayer1();
+                            }
+                            break;
+                            case 2:
+                            actualMoney = AppManager.INSTANCE.getPlayers(1).getMoney() - money;
 
-                    if(actualMoney < 0){
-                        showError(4);
-                    }else{
-                        AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
+                            if(actualMoney < 0){
+                                showError(4);
+                            }else{
+                                AppManager.INSTANCE.getPlayers(1).setMoney(actualMoney);
+                                window.setCurrentMoneyPLayer2();
+                            }
+                            break;
+                        }
+                        closeWindow();
                     }
-                    break;
+                }catch(NumberFormatException e){
+                    showError(1);
                 }
-                closeWindow();
-            }
-        }catch(NumberFormatException e){
-            showError(1);
-        }catch(Exception e){
-            showError(2);
+            break;
+            case 3:
+                try{
+                    int money = Integer.parseInt(insertMoney);
+
+                    if(money < 0){
+                        showError(3);
+                    }else{
+                        int actualMoney = 0;
+
+                        switch(player){
+                            case 1:
+                            actualMoney = AppManager.INSTANCE.getPlayers(0).getMoney() - money;
+
+                            if(actualMoney < 0){
+                                showError(4);
+                            }else{
+                                AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
+                                windowThree.setCurrentMoneyPLayer1();
+                            }
+                            break;
+                            case 2:
+                            actualMoney = AppManager.INSTANCE.getPlayers(1).getMoney() - money;
+
+                            if(actualMoney < 0){
+                                showError(4);
+                            }else{
+                                AppManager.INSTANCE.getPlayers(1).setMoney(actualMoney);
+                                windowThree.setCurrentMoneyPLayer2();
+                            }
+                            break;
+                            case 3:
+                            actualMoney = AppManager.INSTANCE.getPlayers(2).getMoney() - money;
+
+                            if(actualMoney < 0){
+                                showError(4);
+                            }else{
+                                AppManager.INSTANCE.getPlayers(2).setMoney(actualMoney);
+                                 windowThree.setCurrentMoneyPLayer3();
+                            }
+                            break;
+                        }
+                        closeWindow();
+                    }
+                }catch(NumberFormatException e){
+                    showError(1);
+                }
+            break;
+            case 4:
+                try{
+                    int money = Integer.parseInt(insertMoney);
+
+                    if(money < 0){
+                        showError(3);
+                    }else{
+                        int actualMoney = 0;
+
+                        switch(player){
+                            case 1:
+                            actualMoney = AppManager.INSTANCE.getPlayers(0).getMoney() - money;
+
+                            if(actualMoney < 0){
+                                showError(4);
+                            }else{
+                                AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
+                                windowFour.setCurrentMoneyPLayer1();
+                            }
+                            break;
+                            case 2:
+                            actualMoney = AppManager.INSTANCE.getPlayers(1).getMoney() - money;
+
+                            if(actualMoney < 0){
+                                showError(4);
+                            }else{
+                                AppManager.INSTANCE.getPlayers(1).setMoney(actualMoney);
+                                windowFour.setCurrentMoneyPLayer2();
+                            }
+                            break;
+                            case 3:
+                            actualMoney = AppManager.INSTANCE.getPlayers(2).getMoney() - money;
+
+                            if(actualMoney < 0){
+                                showError(4);
+                            }else{
+                                AppManager.INSTANCE.getPlayers(2).setMoney(actualMoney);
+                                 windowFour.setCurrentMoneyPLayer3();
+                            }
+                            break;
+                            case 4:
+                                actualMoney = AppManager.INSTANCE.getPlayers(3).getMoney() - money;
+
+                                if(actualMoney < 0){
+                                    showError(4);
+                                }else{
+                                    AppManager.INSTANCE.getPlayers(3).setMoney(actualMoney);
+                                     windowFour.setCurrentMoneyPLayer4();
+                                }
+                            break;
+                        }
+                        closeWindow();
+                    }
+                }catch(NumberFormatException e){
+                    showError(1);
+                }
+            break;
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

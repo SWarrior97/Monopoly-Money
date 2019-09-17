@@ -80,7 +80,7 @@ public class MainWindow extends javax.swing.JFrame {
         try{
             int numberOfPlayers = Integer.parseInt(insertText);
             
-            if(numberOfPlayers <2 || numberOfPlayers >4){
+            if(numberOfPlayers < 2 || numberOfPlayers >4){
                 showError(3);
             }else{
                 switch(numberOfPlayers){

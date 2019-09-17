@@ -5,18 +5,24 @@
  */
 package View.ThreePlayer;
 
+import Model.AppManager;
+import Model.Player;
+import View.TwoPlayer.PlayersWindow;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Carlos Gomez
  */
 public class MainWindowThreePlayer extends javax.swing.JDialog {
-
+    private java.awt.Frame parent;
     /**
      * Creates new form MainWindowThreePlayer
      */
     public MainWindowThreePlayer(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.parent = parent;
     }
 
     /**
@@ -39,6 +45,11 @@ public class MainWindowThreePlayer extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton1.setText("Ok");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Player 3:");
 
@@ -96,47 +107,32 @@ public class MainWindowThreePlayer extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String player1Name = txtPlayer1Three.getText();
+        String player2Name = txtPlayer2Three.getText();
+        String player3Name = txtPlayer3Three.getText();
+
+        if(player1Name.isEmpty() || player2Name.isEmpty() ||player3Name.isEmpty()){
+            showError(1);
+        }else{
+            //names valid
+            Player player1 = new Player(player1Name, 1500);
+            Player player2 = new Player(player2Name, 1500);
+            Player player3 = new Player(player3Name, 1500);
+
+            AppManager.INSTANCE.addPlayer(player1);
+            AppManager.INSTANCE.addPlayer(player2);
+            AppManager.INSTANCE.addPlayer(player3);
+            
+            PlayersWindowThree window = new PlayersWindowThree(parent, true);
+            window.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainWindowThreePlayer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainWindowThreePlayer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainWindowThreePlayer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainWindowThreePlayer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                MainWindowThreePlayer dialog = new MainWindowThreePlayer(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -147,4 +143,25 @@ public class MainWindowThreePlayer extends javax.swing.JDialog {
     private javax.swing.JTextField txtPlayer2Three;
     private javax.swing.JTextField txtPlayer3Three;
     // End of variables declaration//GEN-END:variables
+
+    private void showError(int erro) {
+        String message;
+        switch(erro){
+            case 1:
+                //names empty
+                message ="Please insert a name";
+                JOptionPane.showMessageDialog(this, message);
+            break;
+            case 2:
+                //all exception
+                message ="Please insert a number";
+                JOptionPane.showMessageDialog(this, message);
+            break;
+                 case 3:
+                //Invalid number of players
+                message ="Invalid number of players (2-4 players)";
+                JOptionPane.showMessageDialog(this, message);
+            break;
+        } 
+    }
 }
