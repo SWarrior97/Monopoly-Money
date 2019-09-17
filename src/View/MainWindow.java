@@ -5,6 +5,11 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
+import View.FourPlayer.MainWindowFourPlayer;
+import View.TwoPlayer.MainWindowTwoPlayer;
+import View.ThreePlayer.MainWindowThreePlayer;
+
 /**
  *
  * @author Carlos Gomez
@@ -27,21 +32,79 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        txtNumberOfPlayers = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Enter the number of players:");
+
+        jButton1.setText("Ok");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNumberOfPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtNumberOfPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String insertText = txtNumberOfPlayers.getText();
+        
+        try{
+            int numberOfPlayers = Integer.parseInt(insertText);
+            
+            if(numberOfPlayers <2 || numberOfPlayers >4){
+                showError(3);
+            }else{
+                switch(numberOfPlayers){
+                    case 2:
+                        MainWindowTwoPlayer twoPlayer = new MainWindowTwoPlayer(this,true);
+                        System.out.println("TEste");
+                        twoPlayer.setVisible(true);
+                        break;
+                    case 3:
+                        MainWindowThreePlayer threePlayer = new MainWindowThreePlayer(this,true);
+                        threePlayer.setVisible(true);
+                        break;
+                    case 4:
+                        MainWindowFourPlayer fourPlayer = new MainWindowFourPlayer(this,true);
+                        fourPlayer.setVisible(true);
+                        break;
+                }
+            }
+        }catch(NumberFormatException e){
+            showError(1);
+        }catch(Exception e){
+            showError(2);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +142,29 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField txtNumberOfPlayers;
     // End of variables declaration//GEN-END:variables
+
+    private void showError(int erro) {
+        String message;
+        switch(erro){
+            case 1:
+                //Number format 
+                message ="Please insert a number";
+                JOptionPane.showMessageDialog(this, message);
+            break;
+            case 2:
+                //all exception
+                message ="Please insert a number";
+                JOptionPane.showMessageDialog(this, message);
+            break;
+                 case 3:
+                //Invalid number of players
+                message ="Invalid number of players (2-4 players)";
+                JOptionPane.showMessageDialog(this, message);
+            break;
+        } 
+    }
 }
