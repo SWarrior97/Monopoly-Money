@@ -86,7 +86,6 @@ public class MainWindow extends javax.swing.JFrame {
                 switch(numberOfPlayers){
                     case 2:
                         MainWindowTwoPlayer twoPlayer = new MainWindowTwoPlayer(this,true);
-                        System.out.println("TEste");
                         twoPlayer.setVisible(true);
                         break;
                     case 3:
