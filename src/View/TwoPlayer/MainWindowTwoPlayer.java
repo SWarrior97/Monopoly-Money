@@ -100,8 +100,8 @@ public class MainWindowTwoPlayer extends javax.swing.JDialog {
             showError(1);
         }else{
             //names valid
-            Player player1 = new Player(player1Name, 1500,1);
-            Player player2 = new Player(player2Name, 1500,2);
+            Player player1 = new Player(player1Name, 15000000,1);
+            Player player2 = new Player(player2Name, 15000000,2);
 
             AppManager.INSTANCE.addPlayer(player1);
             AppManager.INSTANCE.addPlayer(player2);
