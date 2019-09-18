@@ -63,6 +63,9 @@ public class PlayersWindowThree extends javax.swing.JDialog {
         togglePlayer2 = new javax.swing.JToggleButton();
         jLabel6 = new javax.swing.JLabel();
         togglePlayer3 = new javax.swing.JToggleButton();
+        JailCountPLayer1 = new javax.swing.JButton();
+        JailCountPLayer2 = new javax.swing.JButton();
+        JailCountPLayer3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -191,6 +194,27 @@ public class PlayersWindowThree extends javax.swing.JDialog {
             }
         });
 
+        JailCountPLayer1.setText("0");
+        JailCountPLayer1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JailCountPLayer1ActionPerformed(evt);
+            }
+        });
+
+        JailCountPLayer2.setText("0");
+        JailCountPLayer2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JailCountPLayer2ActionPerformed(evt);
+            }
+        });
+
+        JailCountPLayer3.setText("0");
+        JailCountPLayer3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JailCountPLayer3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -234,11 +258,15 @@ public class PlayersWindowThree extends javax.swing.JDialog {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(togglePlayer1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JailCountPLayer1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(togglePlayer2)
-                        .addGap(77, 77, 77))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JailCountPLayer2)
+                        .addGap(32, 32, 32))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -264,7 +292,9 @@ public class PlayersWindowThree extends javax.swing.JDialog {
                         .addContainerGap()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(togglePlayer3)))
+                        .addComponent(togglePlayer3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JailCountPLayer3)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -301,7 +331,10 @@ public class PlayersWindowThree extends javax.swing.JDialog {
                     .addComponent(jLabel5)
                     .addComponent(jLabel4)
                     .addComponent(togglePlayer1)
-                    .addComponent(togglePlayer2))
+                    .addComponent(togglePlayer2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(JailCountPLayer1)
+                        .addComponent(JailCountPLayer2)))
                 .addGap(18, 18, 18)
                 .addComponent(player3nameThree, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -317,7 +350,8 @@ public class PlayersWindowThree extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(togglePlayer3))
+                    .addComponent(togglePlayer3)
+                    .addComponent(JailCountPLayer3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton11)
@@ -411,6 +445,63 @@ public class PlayersWindowThree extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_togglePlayer3ActionPerformed
 
+    private void JailCountPLayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JailCountPLayer1ActionPerformed
+        String text = JailCountPLayer1.getText();
+
+        switch(text){
+            case "0":
+            JailCountPLayer1.setText("1");
+            break;
+            case "1":
+            JailCountPLayer1.setText("2");
+            break;
+            case "2":
+            JailCountPLayer1.setText("3");
+            break;
+            case "3":
+            JailCountPLayer1.setText("0");
+            break;
+        }
+    }//GEN-LAST:event_JailCountPLayer1ActionPerformed
+
+    private void JailCountPLayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JailCountPLayer2ActionPerformed
+        String text = JailCountPLayer2.getText();
+
+        switch(text){
+            case "0":
+            JailCountPLayer2.setText("1");
+            break;
+            case "1":
+            JailCountPLayer2.setText("2");
+            break;
+            case "2":
+            JailCountPLayer2.setText("3");
+            break;
+            case "3":
+            JailCountPLayer2.setText("0");
+            break;
+        }
+    }//GEN-LAST:event_JailCountPLayer2ActionPerformed
+
+    private void JailCountPLayer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JailCountPLayer3ActionPerformed
+        String text = JailCountPLayer3.getText();
+
+        switch(text){
+            case "0":
+            JailCountPLayer3.setText("1");
+            break;
+            case "1":
+            JailCountPLayer3.setText("2");
+            break;
+            case "2":
+            JailCountPLayer3.setText("3");
+            break;
+            case "3":
+            JailCountPLayer3.setText("0");
+            break;
+        }
+    }//GEN-LAST:event_JailCountPLayer3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -420,6 +511,9 @@ public class PlayersWindowThree extends javax.swing.JDialog {
     private javax.swing.JTextField CurrentMoneyPlayer1Three;
     private javax.swing.JTextField CurrentMoneyPlayer2Three;
     private javax.swing.JTextField CurrentMoneyPlayer3Three;
+    private javax.swing.JButton JailCountPLayer1;
+    private javax.swing.JButton JailCountPLayer2;
+    private javax.swing.JButton JailCountPLayer3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
