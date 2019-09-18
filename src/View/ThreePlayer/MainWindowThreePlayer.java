@@ -116,9 +116,9 @@ public class MainWindowThreePlayer extends javax.swing.JDialog {
             showError(1);
         }else{
             //names valid
-            Player player1 = new Player(player1Name, 1500);
-            Player player2 = new Player(player2Name, 1500);
-            Player player3 = new Player(player3Name, 1500);
+            Player player1 = new Player(player1Name, 1500,1);
+            Player player2 = new Player(player2Name, 1500,2);
+            Player player3 = new Player(player3Name, 1500,3);
 
             AppManager.INSTANCE.addPlayer(player1);
             AppManager.INSTANCE.addPlayer(player2);

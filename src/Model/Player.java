@@ -12,10 +12,12 @@ package Model;
 public class Player {
     private String name;
     private int money;
+    private int number;
 
-    public Player(String name, int money) {
+    public Player(String name, int money,int number) {
         this.name = name;
         this.money = money;
+        this.number = number;
     }
 
     public String getName() {
@@ -32,6 +34,21 @@ public class Player {
 
     public void setMoney(int money) {
         this.money = money;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+    
+       
+    
+    @Override
+    public String toString() {
+        return number +"-"+name;
     }
     
     

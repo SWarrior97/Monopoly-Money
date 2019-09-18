@@ -130,10 +130,10 @@ public class MainWindowFourPlayer extends javax.swing.JDialog {
             showError(1);
         }else{
             //names valid
-            Player player1 = new Player(player1Name, 1500);
-            Player player2 = new Player(player2Name, 1500);
-            Player player3 = new Player(player3Name, 1500);
-            Player player4 = new Player(player4Name, 1500);
+            Player player1 = new Player(player1Name, 1500,1);
+            Player player2 = new Player(player2Name, 1500,2);
+            Player player3 = new Player(player3Name, 1500,3);
+            Player player4 = new Player(player4Name, 1500,4);
 
             AppManager.INSTANCE.addPlayer(player1);
             AppManager.INSTANCE.addPlayer(player2);
