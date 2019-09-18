@@ -168,12 +168,16 @@ public class PaymentWindowThree extends javax.swing.JDialog {
                                 windowFour.setCurrentMoneyPLayer2();
                                 windowFour.setCurrentMoneyPLayer3();
                                 windowFour.setCurrentMoneyPLayer4();
+                                
+                                windowFour.setRentMoney(p.getNumber(),quantity);
                             }else{
                                 window.setCurrentMoneyPLayer1();
                                 window.setCurrentMoneyPLayer2();
                                 window.setCurrentMoneyPLayer3();
+                                
+                                
+                                window.setRentMoney(p.getNumber(),quantity);
                             }
-                            
                             closeWindow();
                         }
                     break;
@@ -192,10 +196,14 @@ public class PaymentWindowThree extends javax.swing.JDialog {
                                 windowFour.setCurrentMoneyPLayer2();
                                 windowFour.setCurrentMoneyPLayer3();
                                 windowFour.setCurrentMoneyPLayer4();
+                                
+                                windowFour.setRentMoney(p.getNumber(),quantity);
                             }else{
                                 window.setCurrentMoneyPLayer1();
                                 window.setCurrentMoneyPLayer2();
                                 window.setCurrentMoneyPLayer3();
+                                
+                                window.setRentMoney(p.getNumber(),quantity);
                             }
                             closeWindow();
                         }
@@ -215,10 +223,14 @@ public class PaymentWindowThree extends javax.swing.JDialog {
                                 windowFour.setCurrentMoneyPLayer2();
                                 windowFour.setCurrentMoneyPLayer3();
                                 windowFour.setCurrentMoneyPLayer4();
+                                
+                                windowFour.setRentMoney(p.getNumber(),quantity);
                             }else{
                                 window.setCurrentMoneyPLayer1();
                                 window.setCurrentMoneyPLayer2();
                                 window.setCurrentMoneyPLayer3();
+                                
+                                window.setRentMoney(p.getNumber(),quantity);
                             }
                             closeWindow();
                         }
@@ -237,6 +249,8 @@ public class PaymentWindowThree extends javax.swing.JDialog {
                             windowFour.setCurrentMoneyPLayer2();
                             windowFour.setCurrentMoneyPLayer3();
                             windowFour.setCurrentMoneyPLayer4();
+                            
+                            windowFour.setRentMoney(p.getNumber(),quantity);
                             
                             closeWindow();
                         }

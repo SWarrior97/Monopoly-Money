@@ -17,6 +17,8 @@ import javax.swing.JOptionPane;
  */
 public class PlayersWindow extends javax.swing.JDialog {
     private java.awt.Frame parent;
+    private int rentPlayer1;
+    private int rentPlayer2;
     /**
      * Creates new form PlayersWindow
      */
@@ -57,6 +59,8 @@ public class PlayersWindow extends javax.swing.JDialog {
         togglePlayer2 = new javax.swing.JToggleButton();
         JailCountPLayer1 = new javax.swing.JButton();
         JailCountPLayer2 = new javax.swing.JButton();
+        txtMoneyRentPlayer1 = new javax.swing.JTextField();
+        txtMoneyRentPlayer2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -165,6 +169,10 @@ public class PlayersWindow extends javax.swing.JDialog {
             }
         });
 
+        txtMoneyRentPlayer1.setEditable(false);
+
+        txtMoneyRentPlayer2.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -180,7 +188,9 @@ public class PlayersWindow extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CurrentMoneyPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(CurrentMoneyPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtMoneyRentPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
@@ -190,29 +200,14 @@ public class PlayersWindow extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(JailCountPLayer1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CurrentMoneyPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(player2nameTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(togglePlayer2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JailCountPLayer2)))
-                .addContainerGap())
+                .addComponent(player2nameTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(player1nameTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(155, Short.MAX_VALUE)
+                .addContainerGap(221, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton5)
@@ -221,7 +216,26 @@ public class PlayersWindow extends javax.swing.JDialog {
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton9)
-                        .addGap(147, 147, 147))))
+                        .addGap(218, 218, 218))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CurrentMoneyPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtMoneyRentPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jButton7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(togglePlayer2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JailCountPLayer2)))
+                        .addGap(33, 33, 33))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,7 +249,9 @@ public class PlayersWindow extends javax.swing.JDialog {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(CurrentMoneyPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CurrentMoneyPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CurrentMoneyPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMoneyRentPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMoneyRentPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -256,11 +272,11 @@ public class PlayersWindow extends javax.swing.JDialog {
                     .addComponent(togglePlayer2)
                     .addComponent(JailCountPLayer1)
                     .addComponent(JailCountPLayer2))
-                .addGap(41, 41, 41)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton8)
                     .addComponent(jButton9))
-                .addGap(11, 11, 11)
+                .addGap(13, 13, 13)
                 .addComponent(jButton5)
                 .addContainerGap())
         );
@@ -392,6 +408,8 @@ public class PlayersWindow extends javax.swing.JDialog {
     private javax.swing.JLabel player2nameTwo;
     private javax.swing.JToggleButton togglePlayer1;
     private javax.swing.JToggleButton togglePlayer2;
+    private javax.swing.JTextField txtMoneyRentPlayer1;
+    private javax.swing.JTextField txtMoneyRentPlayer2;
     // End of variables declaration//GEN-END:variables
 
     private void init() {
@@ -399,6 +417,11 @@ public class PlayersWindow extends javax.swing.JDialog {
         player2nameTwo.setText(AppManager.INSTANCE.getPlayers(1).getName());
         setCurrentMoneyPLayer1();
         setCurrentMoneyPLayer2();
+        
+        rentPlayer1 = 0;
+        rentPlayer2 = 0;
+        txtMoneyRentPlayer1.setText(String.valueOf(rentPlayer1));
+        txtMoneyRentPlayer2.setText(String.valueOf(rentPlayer2));
     }
     
     public void setCurrentMoneyPLayer1(){
@@ -418,4 +441,29 @@ public class PlayersWindow extends javax.swing.JDialog {
         String communityBox = AppManager.INSTANCE.getRandomCommunityBox();
         JOptionPane.showMessageDialog(this, communityBox);
     }
+
+    
+
+    void setRentMoney(int player,int quantity) {
+        switch(player){
+            case 1:
+                rentPlayer1 = rentPlayer1 + quantity;
+                setRentMoneyPlayer1();
+            break;
+            case 2:
+                rentPlayer2 = rentPlayer2 + quantity;
+                setRentMoneyPlayer2();
+            break;
+        }
+    }
+
+    private void setRentMoneyPlayer1() {
+        txtMoneyRentPlayer1.setText(String.valueOf(rentPlayer1));
+    }
+
+    private void setRentMoneyPlayer2() {
+         txtMoneyRentPlayer2.setText(String.valueOf(rentPlayer2));
+    }
+    
+    
 }

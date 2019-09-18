@@ -151,6 +151,7 @@ public class PaymentWindow extends javax.swing.JDialog {
                             AppManager.INSTANCE.getPlayers(1).setMoney(money);
                             window.setCurrentMoneyPLayer1();
                             window.setCurrentMoneyPLayer2();
+                            window.setRentMoney(2,quantity);
                             closeWindow();
                         }
                     break;
@@ -166,6 +167,7 @@ public class PaymentWindow extends javax.swing.JDialog {
                             AppManager.INSTANCE.getPlayers(0).setMoney(money);
                             window.setCurrentMoneyPLayer1();
                             window.setCurrentMoneyPLayer2();
+                            window.setRentMoney(1,quantity);
                             closeWindow();
                         }
                     break;
