@@ -11,10 +11,10 @@ package Model;
  */
 public class Player {
     private String name;
-    private int money;
+    private float money;
     private int number;
 
-    public Player(String name, int money,int number) {
+    public Player(String name, float money,int number) {
         this.name = name;
         this.money = money;
         this.number = number;
@@ -28,11 +28,11 @@ public class Player {
         this.name = name;
     }
 
-    public int getMoney() {
+    public float getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(float money) {
         this.money = money;
     }
 

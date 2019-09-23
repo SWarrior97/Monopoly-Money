@@ -143,11 +143,12 @@ public class PaymentWindowThree extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String insertText = txtQuantity.getText();
+        float quantity;
+        float AuxQuantity;
+        float money;
         
-        try{
-            int quantity = Integer.parseInt(insertText);
-            int AuxQuantity;
-            int money;
+         if(insertText.contains("M")){
+            quantity = Float.parseFloat(insertText.split("M")[0])* 1000000;
             
             if(quantity <0){
                 showError(3);
@@ -257,11 +258,122 @@ public class PaymentWindowThree extends javax.swing.JDialog {
                     break;
                }
             }
-        }catch(NumberFormatException e){
-            showError(1);
-        }catch(Exception e){
-            showError(2);
-        }
+         }else{
+             quantity = Float.parseFloat(insertText.split("K")[0])* 1000;
+             
+             if(quantity <0){
+                showError(3);
+            }else{
+               switch(player){
+                   case 1:
+                       AuxQuantity = AppManager.INSTANCE.getPlayers(0).getMoney() - quantity;
+               
+                        if(AuxQuantity<0){
+                            showError(4);
+                        }else{
+                            Player p = (Player) cbPlayer.getSelectedItem();
+                            money = AppManager.INSTANCE.getPlayers(p.getNumber()-1).getMoney() +quantity;
+                            AppManager.INSTANCE.getPlayers(0).setMoney(AuxQuantity);
+                            AppManager.INSTANCE.getPlayers(p.getNumber()-1).setMoney(money);
+                            if(window == null){
+                                windowFour.setCurrentMoneyPLayer1();
+                                windowFour.setCurrentMoneyPLayer2();
+                                windowFour.setCurrentMoneyPLayer3();
+                                windowFour.setCurrentMoneyPLayer4();
+                                
+                                windowFour.setRentMoney(p.getNumber(),quantity);
+                            }else{
+                                window.setCurrentMoneyPLayer1();
+                                window.setCurrentMoneyPLayer2();
+                                window.setCurrentMoneyPLayer3();
+                                
+                                
+                                window.setRentMoney(p.getNumber(),quantity);
+                            }
+                            closeWindow();
+                        }
+                    break;
+                    case 2:
+                        AuxQuantity = AppManager.INSTANCE.getPlayers(1).getMoney() - quantity;
+               
+                        if(AuxQuantity<0){
+                            showError(4);
+                        }else{
+                            Player p = (Player) cbPlayer.getSelectedItem();
+                            money = AppManager.INSTANCE.getPlayers(p.getNumber()-1).getMoney() +quantity;
+                            AppManager.INSTANCE.getPlayers(1).setMoney(AuxQuantity);
+                            AppManager.INSTANCE.getPlayers(p.getNumber()-1).setMoney(money);
+                            if(window == null){
+                                windowFour.setCurrentMoneyPLayer1();
+                                windowFour.setCurrentMoneyPLayer2();
+                                windowFour.setCurrentMoneyPLayer3();
+                                windowFour.setCurrentMoneyPLayer4();
+                                
+                                windowFour.setRentMoney(p.getNumber(),quantity);
+                            }else{
+                                window.setCurrentMoneyPLayer1();
+                                window.setCurrentMoneyPLayer2();
+                                window.setCurrentMoneyPLayer3();
+                                
+                                window.setRentMoney(p.getNumber(),quantity);
+                            }
+                            closeWindow();
+                        }
+                    break;
+                    case 3:
+                        AuxQuantity = AppManager.INSTANCE.getPlayers(2).getMoney() - quantity;
+
+                        if(AuxQuantity<0){
+                            showError(4);
+                        }else{
+                            Player p = (Player) cbPlayer.getSelectedItem();
+                            money = AppManager.INSTANCE.getPlayers(p.getNumber()-1).getMoney() +quantity;
+                            AppManager.INSTANCE.getPlayers(2).setMoney(AuxQuantity);
+                            AppManager.INSTANCE.getPlayers(p.getNumber()-1).setMoney(money);
+                            if(window == null){
+                                windowFour.setCurrentMoneyPLayer1();
+                                windowFour.setCurrentMoneyPLayer2();
+                                windowFour.setCurrentMoneyPLayer3();
+                                windowFour.setCurrentMoneyPLayer4();
+                                
+                                windowFour.setRentMoney(p.getNumber(),quantity);
+                            }else{
+                                window.setCurrentMoneyPLayer1();
+                                window.setCurrentMoneyPLayer2();
+                                window.setCurrentMoneyPLayer3();
+                                
+                                window.setRentMoney(p.getNumber(),quantity);
+                            }
+                            closeWindow();
+                        }
+                    break;
+                    case 4:
+                        AuxQuantity = AppManager.INSTANCE.getPlayers(3).getMoney() - quantity;
+               
+                        if(AuxQuantity<0){
+                            showError(4);
+                        }else{
+                            Player p = (Player) cbPlayer.getSelectedItem();
+                            money = AppManager.INSTANCE.getPlayers(p.getNumber()-1).getMoney() +quantity;
+                            AppManager.INSTANCE.getPlayers(3).setMoney(AuxQuantity);
+                            AppManager.INSTANCE.getPlayers(p.getNumber()-1).setMoney(money);
+                            windowFour.setCurrentMoneyPLayer1();
+                            windowFour.setCurrentMoneyPLayer2();
+                            windowFour.setCurrentMoneyPLayer3();
+                            windowFour.setCurrentMoneyPLayer4();
+                            
+                            windowFour.setRentMoney(p.getNumber(),quantity);
+                            
+                            closeWindow();
+                        }
+                    break;
+               }
+            }
+         }
+        
+            
+            
+            
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

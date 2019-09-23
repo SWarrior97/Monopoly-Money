@@ -8,8 +8,10 @@ package View.TwoPlayer;
 import Model.AppManager;
 import View.AddMoney;
 import View.RemoveMoney;
+import java.text.DecimalFormat;
 import java.util.Random;
 import javax.swing.JOptionPane;
+import javax.swing.text.NumberFormatter;
 
 /**
  *
@@ -17,8 +19,8 @@ import javax.swing.JOptionPane;
  */
 public class PlayersWindow extends javax.swing.JDialog {
     private java.awt.Frame parent;
-    private int rentPlayer1;
-    private int rentPlayer2;
+    private float rentPlayer1;
+    private float rentPlayer2;
     /**
      * Creates new form PlayersWindow
      */
@@ -425,11 +427,23 @@ public class PlayersWindow extends javax.swing.JDialog {
     }
     
     public void setCurrentMoneyPLayer1(){
-        CurrentMoneyPlayer1.setText(String.valueOf(AppManager.INSTANCE.getPlayers(0).getMoney()));
+        float million = AppManager.INSTANCE.getPlayers(0).getMoney()/ 1000000;
+        
+        if(million >=1){
+            CurrentMoneyPlayer1.setText(String.format("%.2fM", AppManager.INSTANCE.getPlayers(0).getMoney()/ 1000000.0));
+        }else{
+            CurrentMoneyPlayer1.setText(String.format("%.2fK", AppManager.INSTANCE.getPlayers(0).getMoney()/ 1000.0));
+        }
     }
     
     public void setCurrentMoneyPLayer2(){
-        CurrentMoneyPlayer2.setText(String.valueOf(AppManager.INSTANCE.getPlayers(1).getMoney()));
+        float million = AppManager.INSTANCE.getPlayers(0).getMoney()/ 1000000;
+        
+        if(million >=1){
+            CurrentMoneyPlayer2.setText(String.format("%.2fM", AppManager.INSTANCE.getPlayers(0).getMoney()/ 1000000.0));
+        }else{
+            CurrentMoneyPlayer2.setText(String.format("%.2fK", AppManager.INSTANCE.getPlayers(0).getMoney()/ 1000.0));
+        }
     }
 
     private void showLuck() {
@@ -444,7 +458,7 @@ public class PlayersWindow extends javax.swing.JDialog {
 
     
 
-    void setRentMoney(int player,int quantity) {
+    void setRentMoney(int player,float quantity) {
         switch(player){
             case 1:
                 rentPlayer1 = rentPlayer1 + quantity;
@@ -458,11 +472,23 @@ public class PlayersWindow extends javax.swing.JDialog {
     }
 
     private void setRentMoneyPlayer1() {
-        txtMoneyRentPlayer1.setText(String.valueOf(rentPlayer1));
+        float million = rentPlayer1/ 1000000;
+        
+        if(million >=1){
+            txtMoneyRentPlayer1.setText(String.format("%.2fM", rentPlayer1/ 1000000.0));
+        }else{
+            txtMoneyRentPlayer1.setText(String.format("%.2fK", rentPlayer1/ 1000.0));
+        }
     }
 
     private void setRentMoneyPlayer2() {
-         txtMoneyRentPlayer2.setText(String.valueOf(rentPlayer2));
+        float million = rentPlayer2/ 1000000;
+        
+        if(million >=1){
+            txtMoneyRentPlayer2.setText(String.format("%.2fM", rentPlayer2/ 1000000.0));
+        }else{
+            txtMoneyRentPlayer2.setText(String.format("%.2fK", rentPlayer2/ 1000.0));
+        }
     }
     
     

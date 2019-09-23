@@ -17,10 +17,10 @@ import javax.swing.JOptionPane;
  */
 public class PlayersWindowFour extends javax.swing.JDialog {
     private java.awt.Frame parent;
-    private int rentPlayer1;
-    private int rentPlayer2;
-    private int rentPlayer3;
-    private int rentPlayer4;
+    private float rentPlayer1;
+    private float rentPlayer2;
+    private float rentPlayer3;
+    private float rentPlayer4;
     /**
      * Creates new form PlayersWindow
      */
@@ -732,19 +732,43 @@ public class PlayersWindowFour extends javax.swing.JDialog {
     }
     
     public void setCurrentMoneyPLayer1(){
-        CurrentMoneyPlayer1Three.setText(String.valueOf(AppManager.INSTANCE.getPlayers(0).getMoney()));
+        float million = AppManager.INSTANCE.getPlayers(0).getMoney()/ 1000000;
+        
+        if(million >=1){
+            CurrentMoneyPlayer1Three.setText(String.format("%.2fM", AppManager.INSTANCE.getPlayers(0).getMoney()/ 1000000.0));
+        }else{
+            CurrentMoneyPlayer1Three.setText(String.format("%.2fK", AppManager.INSTANCE.getPlayers(0).getMoney()/ 1000.0));
+        }
     }
     
     public void setCurrentMoneyPLayer2(){
-        CurrentMoneyPlayer2Three.setText(String.valueOf(AppManager.INSTANCE.getPlayers(1).getMoney()));
+        float million = AppManager.INSTANCE.getPlayers(0).getMoney()/ 1000000;
+        
+        if(million >=1){
+            CurrentMoneyPlayer2Three.setText(String.format("%.2fM", AppManager.INSTANCE.getPlayers(1).getMoney()/ 1000000.0));
+        }else{
+            CurrentMoneyPlayer2Three.setText(String.format("%.2fK", AppManager.INSTANCE.getPlayers(1).getMoney()/ 1000.0));
+        }
     }
     
     public void setCurrentMoneyPLayer3(){
-        CurrentMoneyPlayer3Three.setText(String.valueOf(AppManager.INSTANCE.getPlayers(2).getMoney()));
+        float million = AppManager.INSTANCE.getPlayers(0).getMoney()/ 1000000;
+        
+        if(million >=1){
+            CurrentMoneyPlayer3Three.setText(String.format("%.2fM", AppManager.INSTANCE.getPlayers(2).getMoney()/ 1000000.0));
+        }else{
+            CurrentMoneyPlayer3Three.setText(String.format("%.2fK", AppManager.INSTANCE.getPlayers(2).getMoney()/ 1000.0));
+        }
     }
     
     public void setCurrentMoneyPLayer4(){
-        CurrentMoneyPLayer4.setText(String.valueOf(AppManager.INSTANCE.getPlayers(3).getMoney()));
+        float million = AppManager.INSTANCE.getPlayers(0).getMoney()/ 1000000;
+        
+        if(million >=1){
+            CurrentMoneyPLayer4.setText(String.format("%.2fM", AppManager.INSTANCE.getPlayers(3).getMoney()/ 1000000.0));
+        }else{
+            CurrentMoneyPLayer4.setText(String.format("%.2fK", AppManager.INSTANCE.getPlayers(3).getMoney()/ 1000.0));
+        }
     }
     
      private void showLuck() {
@@ -757,7 +781,7 @@ public class PlayersWindowFour extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(this, communityBox);
     }
     
-     public void setRentMoney(int player,int quantity) {
+     public void setRentMoney(int player,float quantity) {
         switch(player){
             case 1:
                 rentPlayer1 = rentPlayer1 + quantity;
@@ -779,18 +803,42 @@ public class PlayersWindowFour extends javax.swing.JDialog {
     }
 
     private void setRentMoneyPlayer1() {
-        txtMoneyRentPlayer1.setText(String.valueOf(rentPlayer1));
+        float million = rentPlayer1/ 1000000;
+        
+        if(million >=1){
+            txtMoneyRentPlayer1.setText(String.format("%.2fM", rentPlayer1/ 1000000.0));
+        }else{
+            txtMoneyRentPlayer1.setText(String.format("%.2fK", rentPlayer1/ 1000.0));
+        }
     }
 
     private void setRentMoneyPlayer2() {
-         txtMoneyRentPlayer2.setText(String.valueOf(rentPlayer2));
+         float million = rentPlayer2/ 1000000;
+        
+        if(million >=1){
+            txtMoneyRentPlayer2.setText(String.format("%.2fM", rentPlayer2/ 1000000.0));
+        }else{
+            txtMoneyRentPlayer2.setText(String.format("%.2fK", rentPlayer2/ 1000.0));
+        }
     }
     
     private void setRentMoneyPlayer3() {
-         txtMoneyRentPlayer3.setText(String.valueOf(rentPlayer3));
+        float million = rentPlayer3/ 1000000;
+        
+        if(million >=1){
+            txtMoneyRentPlayer3.setText(String.format("%.2fM", rentPlayer3/ 1000000.0));
+        }else{
+            txtMoneyRentPlayer3.setText(String.format("%.2fK", rentPlayer3/ 1000.0));
+        }
     }
     
     private void setRentMoneyPlayer4() {
-         txtMoneyRentPlayer4.setText(String.valueOf(rentPlayer4));
+         float million = rentPlayer4/ 1000000;
+        
+        if(million >=1){
+            txtMoneyRentPlayer4.setText(String.format("%.2fM", rentPlayer4/ 1000000.0));
+        }else{
+            txtMoneyRentPlayer4.setText(String.format("%.2fK", rentPlayer4/ 1000.0));
+        }
     }
 }
