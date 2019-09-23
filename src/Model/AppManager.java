@@ -60,7 +60,7 @@ public enum AppManager {
         String s5 = "Avance para a casa de partida";
         luck.add(s5);
         
-        String s6 = "Transito na hora de pponta! Recue 3 casas";
+        String s6 = "Transito na hora de ponta! Recue 3 casas";
         luck.add(s6);
         
         String s7 = "O aumento do imposto sobre a propriedade sobe e afeta todas as suas propriedades. Pague 400k por cada apartamento e 1.15M por cada Hotel";
@@ -158,13 +158,13 @@ public enum AppManager {
     }
     
     public String getRandomLuck(){
-        int generateNumber = random.nextInt(17);
+        int generateNumber = random.nextInt(16);
         
         return getLuck(generateNumber);
     }
     
     public String getRandomCommunityBox(){
-        int generateNumber = random.nextInt(17);
+        int generateNumber = random.nextInt(16);
         
         return getCommunityBox(generateNumber);
     }
