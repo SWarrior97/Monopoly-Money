@@ -17,12 +17,14 @@ public enum AppManager {
     private LinkedList<Player> players;
     private LinkedList<String> luck;
     private LinkedList<String> communityBox;
+    private LinkedList<Propriety> proprieties;
     private Random random;
     
     AppManager() {
         players = new LinkedList<>();
         luck = new LinkedList<>();
         communityBox = new LinkedList<>();
+        proprieties = new LinkedList<>();
         random = new Random();
         init();
     }
@@ -42,6 +44,7 @@ public enum AppManager {
     private void init() {
         addLuck();
         addCommunityBox();
+        addProprieties();
     }
 
     private void addLuck() {
@@ -171,6 +174,49 @@ public enum AppManager {
 
     public String getCommunityBox(int position) {
         return communityBox.get(position);
+    }
+
+    private void addProprieties() {
+        //castanho
+        Propriety p1 = new Propriety("Castelo Branco", 20000, 100000, 300000, 900000, 1600000, 2500000, 500000, 500000, 300000, "Castanho");
+        proprieties.add(p1);
+        
+        Propriety p2 = new Propriety("Vila Real", 40000, 200000, 600000, 1800000, 3200000, 4500000, 500000, 500000, 300000, "Castanho");
+        proprieties.add(p2);
+        
+        //azul bebe
+        Propriety p3 = new Propriety("Bragança", 60000, 300000, 900000, 2700000, 4000000, 5500000, 500000, 500000, 500000, "Azul bebe");
+        proprieties.add(p3);
+        
+        Propriety p4 = new Propriety("Leiria", 60000, 300000, 900000, 2700000, 4000000, 5500000, 500000, 500000, 500000, "Azul bebe");
+        proprieties.add(p4);
+        
+        Propriety p5 = new Propriety("Portalegre", 80000, 400000, 1000000, 3000000, 4500000, 6000000, 500000, 500000, 600000, "Azul bebe");
+        proprieties.add(p5);
+        
+        //Rosa
+        Propriety p6 = new Propriety("Aveiro", 100000, 500000, 1500000, 4500000, 6250000, 7500000, 1000000, 1000000, 700000, "Rosa");
+        proprieties.add(p6);
+        
+        Propriety p7 = new Propriety("Santarém", 100000, 500000, 1500000, 4500000, 6250000, 7500000, 1000000, 1000000, 700000, "Rosa");
+        proprieties.add(p7);
+        
+        Propriety p8 = new Propriety("Braga", 120000, 600000, 1800000, 5000000, 7000000, 9000000, 1000000, 1000000, 800000, "Rosa");
+        proprieties.add(p8);
+        
+        //Laranja
+        Propriety p9 = new Propriety("Viseu", 140000, 700000, 2000000, 5500000, 7500000, 9500000, 1000000, 1000000, 900000, "Laranja");
+        proprieties.add(p9);
+        
+        Propriety p10 = new Propriety("Setúbal", 140000, 700000, 2000000, 5500000, 7500000, 9500000, 1000000, 1000000, 900000, "Laranja");
+        proprieties.add(p10);
+        
+        Propriety p11 = new Propriety("Guarda", 160000, 800000, 2200000, 6000000, 8000000, 1000000, 1000000, 1000000, 1000000, "Laranja");
+        proprieties.add(p11);
+        
+        
+        //000000
+        
     }
     
     
