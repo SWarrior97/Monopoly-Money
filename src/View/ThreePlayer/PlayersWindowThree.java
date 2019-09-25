@@ -7,6 +7,7 @@ package View.ThreePlayer;
 
 import Model.AppManager;
 import View.AddMoney;
+import View.Dice;
 import View.RemoveMoney;
 import java.util.Random;
 import javax.swing.JOptionPane;

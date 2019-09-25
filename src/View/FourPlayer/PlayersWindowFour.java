@@ -7,6 +7,7 @@ package View.FourPlayer;
 
 import Model.AppManager;
 import View.AddMoney;
+import View.Dice;
 import View.RemoveMoney;
 import View.ThreePlayer.PaymentWindowThree;
 import javax.swing.JOptionPane;
