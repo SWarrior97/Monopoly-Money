@@ -166,12 +166,6 @@ public enum AppManager {
         return getLuck(generateNumber);
     }
     
-    public int roolDice(){
-        int generateNumber = random.nextInt(12)+1;
-        
-        return generateNumber;
-    }
-    
     public String getRandomCommunityBox(){
         int generateNumber = random.nextInt(16);
         
@@ -217,9 +211,65 @@ public enum AppManager {
         Propriety p10 = new Propriety("Setúbal", 140000, 700000, 2000000, 5500000, 7500000, 9500000, 1000000, 1000000, 900000, "Laranja");
         proprieties.add(p10);
         
-        Propriety p11 = new Propriety("Guarda", 160000, 800000, 2200000, 6000000, 8000000, 1000000, 1000000, 1000000, 1000000, "Laranja");
+        Propriety p11 = new Propriety("Guarda", 160000, 800000, 2200000, 6000000, 8000000, 10000000, 1000000, 1000000, 1000000, "Laranja");
         proprieties.add(p11);
         
+        //Vermelho
+        Propriety p12 = new Propriety("Beja", 180000, 900000, 2500000, 7000000, 8750000, 10500000, 1500000, 1500000, 1100000, "Vermelho");
+        proprieties.add(p12);
+        
+        Propriety p13 = new Propriety("Évora", 180000, 900000, 2500000, 7000000, 8750000, 10500000, 1500000, 1500000, 1100000, "Vermelho");
+        proprieties.add(p13);
+        
+        Propriety p14 = new Propriety("Viana do Castelo", 200000, 1000000, 3000000, 7500000, 9250000, 11000000, 1500000, 1500000, 1200000, "Vermelho");
+        proprieties.add(p14);
+        
+        //Amarelo
+        Propriety p15 = new Propriety("Faro", 220000, 1100000, 3300000, 8000000, 9750000, 11500000, 1500000, 1500000, 1300000, "Amarelo");
+        proprieties.add(p15);
+        
+        Propriety p16 = new Propriety("Coimbra", 220000, 1100000, 3300000, 8000000, 9750000, 11500000, 1500000, 1500000, 1300000, "Amarelo");
+        proprieties.add(p16);
+        
+        Propriety p17 = new Propriety("Porto Boavista", 240000, 1200000, 3600000, 8500000, 10250000, 12000000, 1500000, 1500000, 1400000, "Amarelo");
+        proprieties.add(p17);
+        
+        //Verde
+        Propriety p18 = new Propriety("Lisboa Expo", 260000, 1300000, 3900000, 9000000, 11000000, 12750000, 2000000, 2000000, 1500000, "Verde");
+        proprieties.add(p18);
+        
+        Propriety p19 = new Propriety("Madeira", 260000, 1300000, 3900000, 9000000, 11000000, 12750000, 2000000, 2000000, 1500000, "Verde");
+        proprieties.add(p19);
+        
+        Propriety p20 = new Propriety("Açores", 280000, 1500000, 4500000, 10000000, 12000000, 14000000, 2000000, 2000000, 1600000, "Verde");
+        proprieties.add(p20);
+        
+        //Azul escuro
+        Propriety p21 = new Propriety("Porto Ribeira", 350000, 1750000, 5000000, 11000000, 13000000, 15000000, 2000000, 2000000, 1750000, "Azul Escuro");
+        proprieties.add(p21);
+        
+        Propriety p22 = new Propriety("Lisboa Belém", 500000, 2000000, 6000000, 14000000, 17000000, 20000000, 2000000, 2000000, 2000000, "Azul Escuro");
+        proprieties.add(p22);
+        
+        //aeroportos
+        Propriety p23 = new Propriety("Aeroporto João Paulo II", 250000, 500000, 1000000, 2000000,1000000, "Branco");
+        proprieties.add(p23);
+        
+        Propriety p24 = new Propriety("Aeroporto da Madeira", 250000, 500000, 1000000, 2000000,1000000, "Branco");
+        proprieties.add(p24);
+        
+        Propriety p25 = new Propriety("Aeroporto Francisco Sá Carneiro", 250000, 500000, 1000000, 2000000,1000000, "Branco");
+        proprieties.add(p25);
+        
+        Propriety p26 = new Propriety("Aeroporto da Portela", 250000, 500000, 1000000, 2000000,1000000, "Branco");
+        proprieties.add(p26);
+        
+        //serviços
+        Propriety p27 = new Propriety("Internet",750000, "Branco");
+        proprieties.add(p27);
+        
+        Propriety p28 = new Propriety("Telemóveis",750000, "Branco");
+        proprieties.add(p28);
         
         //000000
         

@@ -23,6 +23,8 @@ public class Propriety {
     private float mortgage;
     private boolean isMortgage;
     private String color;
+    private Player owner;
+    private boolean isOwned;
 
     public Propriety(String name, float rental, float oneHouseRental, float twoHouseRental, float threeHouseRental, float fourHouseRental, float hotelRental, float buildHouse, float buildHotel, float mortgage,String color) {
         this.name = name;
@@ -38,6 +40,44 @@ public class Propriety {
         this.color=color;
         this.isMortgage = false;
         this.numberOfHouse = 0;
+        this.owner = null;
+        this.isOwned = false;
+    }
+
+    public Propriety(String name, int rent, int rent2, int rent3, int rent4, int mortgage, String color) {
+        this.name = name;
+        this.rental = rent;
+        this.oneHouseRental = rent2;
+        this.twoHouseRental = rent3;
+        this.threeHouseRental = rent4;
+        this.mortgage = mortgage;
+        this.color=color;
+        this.isMortgage = false;
+        this.numberOfHouse = 0;
+        this.hotelRental = 0;
+        this.buildHouse = 0;
+        this.buildHotel = 0;
+        this.fourHouseRental = 0;
+        this.owner = null;
+        this.isOwned = false;
+    }
+    
+    public Propriety(String name,int mortgage,String color) {
+        this.name = name;
+        this.mortgage = mortgage;
+        this.color = color;
+        this.rental = 4;
+        this.oneHouseRental = 10;
+        this.twoHouseRental = 0;
+        this.owner = null;
+        this.isOwned = false;
+        this.isMortgage = false;
+        this.threeHouseRental = 0;
+        this.fourHouseRental = 0;
+        this.numberOfHouse = 0;
+        this.hotelRental = 0;
+        this.buildHouse = 0;
+        this.buildHotel = 0;
     }
     
     public String getName() {
