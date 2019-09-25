@@ -5,18 +5,22 @@
  */
 package Propriety;
 
+import Model.Propriety;
+
 /**
  *
  * @author Carlos Gomez
  */
 public class ProprietyCard extends javax.swing.JDialog {
-
+    private Propriety propriety;
     /**
      * Creates new form ProprietyCard
      */
-    public ProprietyCard(java.awt.Frame parent, boolean modal) {
+    public ProprietyCard(java.awt.Frame parent, boolean modal,Propriety propriety) {
         super(parent, modal);
         initComponents();
+        this.propriety = propriety;
+        init();
     }
 
     /**
@@ -32,10 +36,24 @@ public class ProprietyCard extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblPrecoRental = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblPrecoHouse1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        lblPrecoHouse2 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        lblPrecoHouse3 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        lblPrecoHouse4 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        lblPrecoHotel = new javax.swing.JLabel();
+        lblTxt = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        lblPrecoBuildHouse = new javax.swing.JLabel();
+        lblPrecoBuildHotel = new javax.swing.JLabel();
+        lblHipoteca = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -45,15 +63,43 @@ public class ProprietyCard extends javax.swing.JDialog {
 
         jLabel2.setText("ALUGUER - SÓ DO TERRENO");
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setText("€");
 
-        jLabel4.setText("jLabel4");
+        lblPrecoRental.setText("jLabel4");
 
         jLabel5.setText("\"                  Com 1 apartamento");
 
-        jLabel6.setText("jLabel6");
+        lblPrecoHouse1.setText("jLabel6");
 
-        jLabel7.setText("jLabel7");
+        jLabel7.setText("\"                  Com 2 apartamento");
+
+        lblPrecoHouse2.setText("jLabel8");
+
+        jLabel9.setText("\"                  Com 3 apartamento");
+
+        lblPrecoHouse3.setText("jLabel10");
+
+        jLabel11.setText("\"                  Com 4 apartamento");
+
+        lblPrecoHouse4.setText("jLabel12");
+
+        jLabel13.setText("ALUGUER COM HOTEL");
+
+        lblPrecoHotel.setText("jLabel14");
+
+        lblTxt.setText("label15");
+
+        jLabel16.setText("Preço dos apartamentos");
+
+        jLabel17.setText("Preço dos hoteis");
+
+        jLabel18.setText("Valor da hipoteca do terreno");
+
+        lblPrecoBuildHouse.setText("jLabel19");
+
+        lblPrecoBuildHotel.setText("jLabel20");
+
+        lblHipoteca.setText("jLabel21");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,18 +108,26 @@ public class ProprietyCard extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4))
+                        .addComponent(lblPrecoRental))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(124, 124, 124)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                        .addComponent(jLabel3)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblPrecoHouse2)
+                            .addComponent(lblPrecoHouse1)
+                            .addComponent(lblPrecoHouse3)
+                            .addComponent(lblPrecoHouse4)
+                            .addComponent(lblPrecoHotel)
+                            .addComponent(lblPrecoBuildHouse)
+                            .addComponent(lblPrecoBuildHotel)
+                            .addComponent(lblHipoteca))))
                 .addGap(24, 24, 24))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -82,7 +136,14 @@ public class ProprietyCard extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel7))
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel13)
+                            .addComponent(lblTxt)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel18))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -99,16 +160,44 @@ public class ProprietyCard extends javax.swing.JDialog {
                         .addGap(100, 100, 100)
                         .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPrecoRental)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(lblPrecoHouse1))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(lblPrecoHouse2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(lblPrecoHouse3))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(lblPrecoHouse4))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(lblPrecoHotel))
+                .addGap(45, 45, 45)
+                .addComponent(lblTxt)
+                .addGap(65, 65, 65)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(lblPrecoBuildHouse))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(lblPrecoBuildHotel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(lblHipoteca))
+                .addContainerGap())
         );
 
         pack();
@@ -121,12 +210,30 @@ public class ProprietyCard extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel labelName;
+    private javax.swing.JLabel lblHipoteca;
+    private javax.swing.JLabel lblPrecoBuildHotel;
+    private javax.swing.JLabel lblPrecoBuildHouse;
+    private javax.swing.JLabel lblPrecoHotel;
+    private javax.swing.JLabel lblPrecoHouse1;
+    private javax.swing.JLabel lblPrecoHouse2;
+    private javax.swing.JLabel lblPrecoHouse3;
+    private javax.swing.JLabel lblPrecoHouse4;
+    private javax.swing.JLabel lblPrecoRental;
+    private javax.swing.JLabel lblTxt;
     // End of variables declaration//GEN-END:variables
+
+    private void init() {
+          
+    }
 }
