@@ -166,6 +166,12 @@ public enum AppManager {
         return getLuck(generateNumber);
     }
     
+    public int roolDice(){
+        int generateNumber = random.nextInt(12)+1;
+        
+        return generateNumber;
+    }
+    
     public String getRandomCommunityBox(){
         int generateNumber = random.nextInt(16);
         
