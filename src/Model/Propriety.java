@@ -25,8 +25,9 @@ public class Propriety {
     private String color;
     private Player owner;
     private boolean isOwned;
+    private float price;
 
-    public Propriety(String name, float rental, float oneHouseRental, float twoHouseRental, float threeHouseRental, float fourHouseRental, float hotelRental, float buildHouse, float buildHotel, float mortgage,String color) {
+    public Propriety(String name,float price, float rental, float oneHouseRental, float twoHouseRental, float threeHouseRental, float fourHouseRental, float hotelRental, float buildHouse, float buildHotel, float mortgage,String color) {
         this.name = name;
         this.rental = rental;
         this.oneHouseRental = oneHouseRental;
@@ -38,13 +39,14 @@ public class Propriety {
         this.buildHotel = buildHotel;
         this.mortgage = mortgage;
         this.color=color;
+        this.price = price;
         this.isMortgage = false;
         this.numberOfHouse = 0;
         this.owner = null;
         this.isOwned = false;
     }
 
-    public Propriety(String name, int rent, int rent2, int rent3, int rent4, int mortgage, String color) {
+    public Propriety(String name,float price, int rent, int rent2, int rent3, int rent4, int mortgage, String color) {
         this.name = name;
         this.rental = rent;
         this.oneHouseRental = rent2;
@@ -52,6 +54,7 @@ public class Propriety {
         this.threeHouseRental = rent4;
         this.mortgage = mortgage;
         this.color=color;
+        this.price = price;
         this.isMortgage = false;
         this.numberOfHouse = 0;
         this.hotelRental = 0;
@@ -62,10 +65,11 @@ public class Propriety {
         this.isOwned = false;
     }
     
-    public Propriety(String name,int mortgage,String color) {
+    public Propriety(String name,float price,int mortgage,String color) {
         this.name = name;
         this.mortgage = mortgage;
         this.color = color;
+        this.price = price;
         this.rental = 4;
         this.oneHouseRental = 10;
         this.twoHouseRental = 0;
@@ -198,6 +202,19 @@ public class Propriety {
 
     public void setIsOwned(boolean isOwned) {
         this.isOwned = isOwned;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
     
     
