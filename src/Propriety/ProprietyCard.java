@@ -5,7 +5,9 @@
  */
 package Propriety;
 
+import Model.AppManager;
 import Model.Propriety;
+import java.awt.Color;
 
 /**
  *
@@ -87,7 +89,7 @@ public class ProprietyCard extends javax.swing.JDialog {
 
         lblPrecoHotel.setText("jLabel14");
 
-        lblTxt.setText("label15");
+        lblTxt.setText("Se um Jogador possuir todos os \\n\nterrenos de um grupo de cor, o aluguer\\n\ndos terrenos sem construções,1nnesse grupo, é a dobrar.");
 
         jLabel16.setText("Preço dos apartamentos");
 
@@ -105,68 +107,69 @@ public class ProprietyCard extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblPrecoRental))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblPrecoHouse2)
-                            .addComponent(lblPrecoHouse1)
-                            .addComponent(lblPrecoHouse3)
-                            .addComponent(lblPrecoHouse4)
-                            .addComponent(lblPrecoHotel)
-                            .addComponent(lblPrecoBuildHouse)
-                            .addComponent(lblPrecoBuildHotel)
-                            .addComponent(lblHipoteca))))
-                .addGap(24, 24, 24))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
                             .addComponent(jLabel5)
                             .addComponent(jLabel7)
                             .addComponent(jLabel9)
                             .addComponent(jLabel11)
-                            .addComponent(jLabel13)
-                            .addComponent(lblTxt)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel18))
+                            .addComponent(jLabel13))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(182, 182, 182)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblPrecoHouse2)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblPrecoHotel)
+                                        .addComponent(lblPrecoHouse4)
+                                        .addComponent(lblPrecoHouse3))
+                                    .addComponent(lblPrecoHouse1)
+                                    .addComponent(lblPrecoRental))
+                                .addGap(31, 42, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(124, 124, 124)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel17))
+                                .addGap(182, 182, 182)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblPrecoBuildHotel)
+                                    .addComponent(lblHipoteca)
+                                    .addComponent(lblPrecoBuildHouse))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel3)))
+                .addContainerGap()
+                .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPrecoRental)
-                    .addComponent(jLabel2))
+                .addComponent(jLabel1)
+                .addGap(7, 7, 7)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lblPrecoRental))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(lblPrecoHouse1))
+                    .addComponent(lblPrecoHouse1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -183,9 +186,9 @@ public class ProprietyCard extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(lblPrecoHotel))
-                .addGap(45, 45, 45)
-                .addComponent(lblTxt)
-                .addGap(65, 65, 65)
+                .addGap(36, 36, 36)
+                .addComponent(lblTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(lblPrecoBuildHouse))
@@ -193,11 +196,11 @@ public class ProprietyCard extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(lblPrecoBuildHotel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(lblHipoteca))
-                .addContainerGap())
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -234,6 +237,124 @@ public class ProprietyCard extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void init() {
-          
+        labelName.setText("                                                              "+propriety.getName());
+         
+        //houses price
+        float million = propriety.getRental()/1000000;
+        
+        if(million >=1){
+            lblPrecoRental.setText(String.format("%.2fM",propriety.getRental()/ 1000000.0));
+        }else{
+            lblPrecoRental.setText(String.format("%.2fK", propriety.getRental()/ 1000.0));
+        }
+        
+        million = propriety.getOneHouseRental()/1000000;
+        
+        if(million >=1){
+            lblPrecoHouse1.setText(String.format("%.2fM",propriety.getOneHouseRental()/ 1000000.0));
+        }else{
+            lblPrecoHouse1.setText(String.format("%.2fK", propriety.getOneHouseRental()/ 1000.0));
+        }
+        
+        million = propriety.getTwoHouseRental()/1000000;
+        
+        if(million >=1){
+            lblPrecoHouse2.setText(String.format("%.2fM",propriety.getTwoHouseRental()/ 1000000.0));
+        }else{
+            lblPrecoHouse2.setText(String.format("%.2fK", propriety.getTwoHouseRental()/ 1000.0));
+        }
+        
+        million = propriety.getThreeHouseRental()/1000000;
+        
+        if(million >=1){
+            lblPrecoHouse3.setText(String.format("%.2fM",propriety.getThreeHouseRental()/ 1000000.0));
+        }else{
+            lblPrecoHouse3.setText(String.format("%.2fK", propriety.getThreeHouseRental()/ 1000.0));
+        }
+        
+        million = propriety.getFourHouseRental()/1000000;
+        
+        if(million >=1){
+            lblPrecoHouse4.setText(String.format("%.2fM",propriety.getFourHouseRental()/ 1000000.0));
+        }else{
+            lblPrecoHouse4.setText(String.format("%.2fK", propriety.getFourHouseRental()/ 1000.0));
+        }
+        
+        million = propriety.getHotelRental()/1000000;
+        
+        if(million >=1){
+            lblPrecoHotel.setText(String.format("%.2fM",propriety.getHotelRental()/ 1000000.0));
+        }else{
+            lblPrecoHotel.setText(String.format("%.2fK", propriety.getHotelRental()/ 1000.0));
+        }
+        
+        //build 
+        million = propriety.getBuildHouse()/1000000;
+        
+        if(million >=1){
+            lblPrecoBuildHouse.setText(String.format("%.2fM",propriety.getBuildHouse()/ 1000000.0));
+        }else{
+            lblPrecoBuildHouse.setText(String.format("%.2fK", propriety.getBuildHouse()/ 1000.0));
+        }
+        
+        million = propriety.getBuildHotel()/1000000;
+        
+        if(million >=1){
+            lblPrecoBuildHotel.setText(String.format("%.2fM",propriety.getBuildHotel()/ 1000000.0));
+        }else{
+            lblPrecoBuildHotel.setText(String.format("%.2fK", propriety.getBuildHotel()/ 1000.0));
+        }
+        
+        //mortgage
+        million = propriety.getMortgage()/1000000;
+        
+        if(million >=1){
+            lblHipoteca.setText(String.format("%.2fM",propriety.getMortgage()/ 1000000.0));
+        }else{
+            lblHipoteca.setText(String.format("%.2fK", propriety.getMortgage()/ 1000.0));
+        }
+ 
+        String html = "<html><body>Se um Jogador possuir todos os<br>terrenos de um grupo de cor,"
+                + " o aluguer<br>dos terrenos sem construções,nesse grupo, é a dobrar.</body></html>";
+        lblTxt.setText(html);
+         
+       
+        switch(propriety.getColor()){
+            case "Castanho":
+                labelName.setOpaque(true);
+                labelName.setBackground(new Color(102,51,0));
+            break;
+            case "Azul bebe":
+                labelName.setOpaque(true);
+                labelName.setBackground(new Color(51,204,255));
+            break;
+            case "Rosa":
+                labelName.setOpaque(true);
+                labelName.setBackground(new Color(255,20,147));
+            break;
+            case "Laranja":
+                labelName.setOpaque(true);
+                labelName.setBackground(new Color(255,102,0));
+            break;
+            case "Vermelho":
+                labelName.setOpaque(true);
+                labelName.setBackground(Color.RED);
+            break;
+            case "Amarelo":
+                labelName.setOpaque(true);
+                labelName.setBackground(Color.YELLOW);
+            break;
+            case "Verde":
+                labelName.setOpaque(true);
+                labelName.setBackground(new Color(0,128,0));
+            break;
+            case "Azul Escuro":
+                labelName.setOpaque(true);
+                labelName.setBackground(new Color(0,0,153));
+            break;
+        }
+        
+        this.getContentPane().setBackground(Color.WHITE);
+        
     }
 }

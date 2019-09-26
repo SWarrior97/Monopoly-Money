@@ -274,6 +274,14 @@ public enum AppManager {
         //000000
         
     }
+
+    public LinkedList<Propriety> getProprieties() {
+        return proprieties;
+    }
+    
+    public Propriety getPropriety(int position) {
+        return proprieties.get(position);
+    }
     
     
     

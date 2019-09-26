@@ -175,6 +175,31 @@ public class Propriety {
     public void setIsMortgage(boolean isMortgage) {
         this.isMortgage = isMortgage;
     }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public Player getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Player owner) {
+        this.owner = owner;
+    }
+
+    public boolean isIsOwned() {
+        return isOwned;
+    }
+
+    public void setIsOwned(boolean isOwned) {
+        this.isOwned = isOwned;
+    }
+    
     
     
     
