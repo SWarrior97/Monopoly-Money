@@ -197,6 +197,11 @@ public class PlayersWindow extends javax.swing.JDialog {
         });
 
         jButton12.setText("Buy Propriety");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         jButton13.setText("Proprieties");
 
@@ -435,9 +440,14 @@ public class PlayersWindow extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        ProprietiesBuy buy = new ProprietiesBuy(parent, true, 0);
+        ProprietiesBuy buy = new ProprietiesBuy(parent, true, 0,this);
         buy.setVisible(true);
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        ProprietiesBuy buy = new ProprietiesBuy(parent, true, 1,this);
+        buy.setVisible(true);
+    }//GEN-LAST:event_jButton12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -499,12 +509,12 @@ public class PlayersWindow extends javax.swing.JDialog {
     }
     
     public void setCurrentMoneyPLayer2(){
-        float million = AppManager.INSTANCE.getPlayers(0).getMoney()/ 1000000;
+        float million = AppManager.INSTANCE.getPlayers(1).getMoney()/ 1000000;
         
         if(million >=1){
-            CurrentMoneyPlayer2.setText(String.format("%.2fM", AppManager.INSTANCE.getPlayers(0).getMoney()/ 1000000.0));
+            CurrentMoneyPlayer2.setText(String.format("%.2fM", AppManager.INSTANCE.getPlayers(1).getMoney()/ 1000000.0));
         }else{
-            CurrentMoneyPlayer2.setText(String.format("%.2fK", AppManager.INSTANCE.getPlayers(0).getMoney()/ 1000.0));
+            CurrentMoneyPlayer2.setText(String.format("%.2fK", AppManager.INSTANCE.getPlayers(1).getMoney()/ 1000.0));
         }
     }
 

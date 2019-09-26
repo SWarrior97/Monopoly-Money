@@ -8,10 +8,13 @@ package View;
 import Model.AppManager;
 import Model.Player;
 import Model.Propriety;
+import Propriety.ProprietyCard;
+import View.TwoPlayer.PlayersWindow;
 import java.awt.Color;
 import java.util.LinkedList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,14 +23,19 @@ import javax.swing.JLabel;
 public class ProprietiesBuy extends javax.swing.JDialog {
     private int position;
     private Player player;
+    private String name;
+    private java.awt.Frame parent;
+    private PlayersWindow window;
 
     /**
      * Creates new form ProprietiesBuy
      */
-    public ProprietiesBuy(java.awt.Frame parent, boolean modal,int position) {
+    public ProprietiesBuy(java.awt.Frame parent, boolean modal,int position,PlayersWindow window) {
         super(parent, modal);
         initComponents();
         this.position = position;
+        this.parent = parent;
+        this.window=window;
         this.player = AppManager.INSTANCE.getPlayers(position);
         init();
         
@@ -48,6 +56,7 @@ public class ProprietiesBuy extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
         jLabel31 = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -67,10 +76,22 @@ public class ProprietiesBuy extends javax.swing.JDialog {
         });
 
         jButton2.setText("Buy");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel31.setText("Price:");
 
         txtPrice.setEditable(false);
+
+        jButton3.setText("Details");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,16 +103,21 @@ public class ProprietiesBuy extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel30)
-                    .addComponent(jLabel31))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(comboPropriety, 0, 162, Short.MAX_VALUE)
-                    .addComponent(txtPrice))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel30)
+                            .addComponent(jLabel31))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboPropriety, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +130,9 @@ public class ProprietiesBuy extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel31)
                     .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -125,11 +153,58 @@ public class ProprietiesBuy extends javax.swing.JDialog {
             txtPrice.setText(String.format("%.2fK", p.getPrice()/ 1000.0));
         }
         
+        name = p.getName();
     }//GEN-LAST:event_comboProprietyActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
+        closeWindow();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Propriety propriety = null;
+        if(name.contains("Aeroporto")){
+            //TODO
+        }else if(name.contains("Internet")){
+            //TODO
+        }else if(name.contains("Telemóveis")){
+            //TODO
+        }else{
+            for(Propriety p:AppManager.INSTANCE.getProprieties()){
+                if(p.getName().equals(name)){
+                    propriety=p;
+                }
+            }
+            ProprietyCard card = new ProprietyCard(parent,true,propriety);
+            card.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        float valor=0;
+        for(Propriety p:AppManager.INSTANCE.getProprieties()){
+                if(p.getName().equals(name)){
+                    valor = p.getPrice();
+                }
+         }
+        
+        if(valor>player.getMoney()){
+            showError(1);
+        }else{
+            float money = player.getMoney() - valor;
+            player.setMoney(money);
+            
+            for(Propriety p:AppManager.INSTANCE.getProprieties()){
+                if(p.getName().equals(name)){
+                   player.addPropriety(p);
+                   p.setIsOwned(true);
+                   p.setOwner(player);
+                }
+            }
+            window.setCurrentMoneyPLayer1();
+            window.setCurrentMoneyPLayer2();
+            closeWindow();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void init() {
        LinkedList<Propriety> listAux = new LinkedList<>();
@@ -140,6 +215,18 @@ public class ProprietiesBuy extends javax.swing.JDialog {
            }
        }
        comboPropriety.setModel(new DefaultComboBoxModel(listAux.toArray()));
+       name = "Castelo Branco";
+       for(Propriety p:AppManager.INSTANCE.getProprieties()){
+            if(p.getName().equals(name)){
+                float million = p.getPrice()/ 1000000;
+        
+                if(million >=1){
+                    txtPrice.setText(String.format("%.2fM", p.getPrice()/ 1000000.0));
+                }else{
+                    txtPrice.setText(String.format("%.2fK", p.getPrice()/ 1000.0));
+                }
+            }
+       }
     }
 
     /**
@@ -151,8 +238,25 @@ public class ProprietiesBuy extends javax.swing.JDialog {
     private javax.swing.JComboBox comboPropriety;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables
+
+    private void showError(int erro) {
+        String message;
+        switch(erro){
+            case 1:
+                //Number format 
+                message ="The player dont have money to buy it";
+                JOptionPane.showMessageDialog(this, message);
+            break;
+        } 
+    }
+
+    private void closeWindow() {
+        this.dispose();
+    }
+
 }
