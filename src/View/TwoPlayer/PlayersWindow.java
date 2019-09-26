@@ -10,6 +10,7 @@ import View.AddMoney;
 import View.Dice;
 import View.ProprietiesBuy;
 import View.RemoveMoney;
+import View.ShowPropriety;
 import java.text.DecimalFormat;
 import java.util.Random;
 import javax.swing.JOptionPane;
@@ -204,6 +205,11 @@ public class PlayersWindow extends javax.swing.JDialog {
         });
 
         jButton13.setText("Proprieties");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         jButton14.setText("Proprieties");
 
@@ -448,6 +454,11 @@ public class PlayersWindow extends javax.swing.JDialog {
         ProprietiesBuy buy = new ProprietiesBuy(parent, true, 1,this);
         buy.setVisible(true);
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        ShowPropriety show = new ShowPropriety(parent, true,0,this);
+        show.setVisible(true);
+    }//GEN-LAST:event_jButton13ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,12 +5,10 @@
         <group>
             <file>file:/F:/git/Monopoly%20Cash/src/View/TwoPlayer/PlayersWindow.java</file>
             <file>file:/F:/git/Monopoly%20Cash/src/Model/AppManager.java</file>
-            <file>file:/F:/git/Monopoly%20Cash/src/Propriety/ServiceCard.java</file>
             <file>file:/F:/git/Monopoly%20Cash/src/View/FourPlayer/PlayersWindowFour.java</file>
             <file>file:/F:/git/Monopoly%20Cash/src/View/ProprietiesBuy.java</file>
-            <file>file:/F:/git/Monopoly%20Cash/src/Propriety/AeroportCard.java</file>
-            <file>file:/F:/git/Monopoly%20Cash/src/Propriety/ProprietyCard.java</file>
             <file>file:/F:/git/Monopoly%20Cash/src/Model/Propriety.java</file>
+            <file>file:/F:/git/Monopoly%20Cash/src/View/ShowPropriety.java</file>
         </group>
     </open-files>
 </project-private>

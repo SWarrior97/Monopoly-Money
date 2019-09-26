@@ -26,6 +26,7 @@ public class Propriety {
     private Player owner;
     private boolean isOwned;
     private float price;
+    private boolean hasHotel;
 
     public Propriety(String name,float price, float rental, float oneHouseRental, float twoHouseRental, float threeHouseRental, float fourHouseRental, float hotelRental, float buildHouse, float buildHotel, float mortgage,String color) {
         this.name = name;
@@ -44,6 +45,7 @@ public class Propriety {
         this.numberOfHouse = 0;
         this.owner = null;
         this.isOwned = false;
+        this.hasHotel = false;
     }
 
     public Propriety(String name,float price, int rent, int rent2, int rent3, int rent4, int mortgage, String color) {
@@ -63,6 +65,7 @@ public class Propriety {
         this.fourHouseRental = 0;
         this.owner = null;
         this.isOwned = false;
+        this.hasHotel = false;
     }
     
     public Propriety(String name,float price,int mortgage,String color) {
@@ -82,6 +85,7 @@ public class Propriety {
         this.hotelRental = 0;
         this.buildHouse = 0;
         this.buildHotel = 0;
+        this.hasHotel = false;
     }
     
     public String getName() {
@@ -210,6 +214,14 @@ public class Propriety {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public boolean isHasHotel() {
+        return hasHotel;
+    }
+
+    public void setHasHotel(boolean hasHotel) {
+        this.hasHotel = hasHotel;
     }
 
     @Override
