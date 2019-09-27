@@ -212,6 +212,11 @@ public class PlayersWindow extends javax.swing.JDialog {
         });
 
         jButton14.setText("Proprieties");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -459,6 +464,11 @@ public class PlayersWindow extends javax.swing.JDialog {
         ShowPropriety show = new ShowPropriety(parent, true,0,this);
         show.setVisible(true);
     }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        ShowPropriety show = new ShowPropriety(parent, true,1,this);
+        show.setVisible(true);
+    }//GEN-LAST:event_jButton14ActionPerformed
 
     /**
      * @param args the command line arguments

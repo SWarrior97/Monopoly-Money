@@ -154,6 +154,7 @@ public class ProprietiesBuy extends javax.swing.JDialog {
         }
         
         name = p.getName();
+        
     }//GEN-LAST:event_comboProprietyActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -198,11 +199,13 @@ public class ProprietiesBuy extends javax.swing.JDialog {
                    player.addPropriety(p);
                    p.setIsOwned(true);
                    p.setOwner(player);
+                   System.out.println();
                 }
             }
             window.setCurrentMoneyPLayer1();
             window.setCurrentMoneyPLayer2();
             closeWindow();
+           
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -215,7 +218,14 @@ public class ProprietiesBuy extends javax.swing.JDialog {
            }
        }
        comboPropriety.setModel(new DefaultComboBoxModel(listAux.toArray()));
-       name = "Castelo Branco";
+       
+       for(Propriety p:AppManager.INSTANCE.getProprieties()){
+           if(!p.isIsOwned()){
+               name = p.getName();
+               break;
+           }
+       }
+       
        for(Propriety p:AppManager.INSTANCE.getProprieties()){
             if(p.getName().equals(name)){
                 float million = p.getPrice()/ 1000000;

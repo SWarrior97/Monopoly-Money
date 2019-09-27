@@ -50,6 +50,12 @@ public class ShowPropriety extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtNumberOfHouse = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtHotel = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtPrice = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -89,15 +95,39 @@ public class ShowPropriety extends javax.swing.JDialog {
             }
         });
 
+        jLabel2.setText("Number of house:");
+
+        txtNumberOfHouse.setEditable(false);
+
+        jLabel3.setText("Hotel");
+
+        txtHotel.setEditable(false);
+
+        jLabel4.setText("Price:");
+
+        txtPrice.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbProprieties, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbProprieties, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                            .addComponent(txtHotel)
+                            .addComponent(txtNumberOfHouse))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -116,9 +146,21 @@ public class ShowPropriety extends javax.swing.JDialog {
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(txtNumberOfHouse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(txtHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addContainerGap())
         );
@@ -133,6 +175,9 @@ public class ShowPropriety extends javax.swing.JDialog {
     private void cbProprietiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProprietiesActionPerformed
         Propriety p = (Propriety) cbProprieties.getSelectedItem();
         name = p.getName();
+        setHotel();
+        setNumberOfHouse();
+        setPrice();
     }//GEN-LAST:event_cbProprietiesActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -170,6 +215,9 @@ public class ShowPropriety extends javax.swing.JDialog {
                        p.setNumberOfHouse(0);
                        p.setHasHotel(true);
                        player.setMoney(valor-p.getBuildHotel());
+                       setHotel();
+                       setNumberOfHouse();
+                       setPrice();
                     }
                 }
             }
@@ -201,10 +249,19 @@ public class ShowPropriety extends javax.swing.JDialog {
                             if(valor<propriety.getBuildHouse()){
                                 showError(5);
                             }else{
+                                /*for(Propriety p1:player.getProprieties()){
+                                    if(p1.getColor().equals("Castanho")){
+                                        if(!p1.getName().equals(name)){
+                                            
+                                        }
+                                    }
+                                }*/
                                 propriety.setNumberOfHouse(propriety.getNumberOfHouse()+1);
                                 player.setMoney(valor - propriety.getBuildHouse());
                                 window.setCurrentMoneyPLayer1();
                                 window.setCurrentMoneyPLayer2();
+                                setNumberOfHouse();
+                                setPrice();
                             }
                         }
                     }else{
@@ -231,6 +288,7 @@ public class ShowPropriety extends javax.swing.JDialog {
                                 player.setMoney(valor - propriety.getBuildHouse());
                                 window.setCurrentMoneyPLayer1();
                                 window.setCurrentMoneyPLayer2();
+                                setNumberOfHouse();
                             }
                             
                         }
@@ -260,6 +318,12 @@ public class ShowPropriety extends javax.swing.JDialog {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField txtHotel;
+    private javax.swing.JTextField txtNumberOfHouse;
+    private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables
 
     private void closeWindow() {
@@ -275,6 +339,9 @@ public class ShowPropriety extends javax.swing.JDialog {
         cbProprieties.setModel(new DefaultComboBoxModel(listAux.toArray()));
         Propriety p = (Propriety) cbProprieties.getSelectedItem();
         name = p.getName();
+        setHotel();
+        setNumberOfHouse();
+        setPrice();
     }
 
     private void showError(int erro) {
@@ -305,5 +372,243 @@ public class ShowPropriety extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, message);
             break;
         } 
+    }
+    
+    private void setNumberOfHouse(){
+        for(Propriety p1:AppManager.INSTANCE.getProprieties()){
+            if(p1.getName().equals(name)){
+                txtNumberOfHouse.setText(String.valueOf(p1.getNumberOfHouse()));
+            }
+        }
+    }
+    
+    private void setHotel(){
+        for(Propriety p1:AppManager.INSTANCE.getProprieties()){
+            if(p1.getName().equals(name)){
+                if(p1.isHasHotel()){
+                    txtHotel.setText("Yes");
+                }else{
+                    txtHotel.setText("No");
+                }
+                
+            }
+        }
+    }
+
+    private void setPrice() {
+        int count = 0;
+        int countAeroporto = 0;
+        int countServices=0;
+        int countHouses=0;
+        
+        String color = null;
+        for(Propriety p:AppManager.INSTANCE.getProprieties()){
+            if(p.getName().equals(name)){
+                float million;
+                if(p.isHasHotel()){
+                    million = p.getHotelRental()/1000000;
+                    
+                    if(million >=1){
+                        txtPrice.setText(String.format("%.2fM", p.getPrice()/ 1000000.0));
+                    }else{
+                        txtPrice.setText(String.format("%.2fK", p.getPrice()/ 1000.0));
+                    } 
+                }else{
+                    switch(p.getNumberOfHouse()){
+                        case 0:
+                            for(Propriety propriety:player.getProprieties()){
+                                if(propriety.getName().equals(name)){
+                                    color = propriety.getColor();
+                                }
+                            }
+                            
+                            for(Propriety propriety:player.getProprieties()){
+                                if(propriety.getColor().equals(color)){
+                                    count++;
+                                }
+                                
+                                if(color.equals("branco")){
+                                    if(propriety.getName().contains("Aeroporto")){
+                                        countAeroporto++;
+                                    }else{
+                                        countServices++;
+                                    }
+                                }
+                            }
+                            
+                            switch (color){
+                                case "Castanho":
+                                    if(count != 2){
+                                       million = p.getRental()/1000000;
+                    
+                                        if(million >=1){
+                                            txtPrice.setText(String.format("%.2fM", p.getRental()/ 1000000.0));
+                                        }else{
+                                            txtPrice.setText(String.format("%.2fK", p.getRental()/ 1000.0));
+                                        } 
+                                    }else{
+                                        
+                                       for(Propriety propriety:player.getProprieties()){
+                                            if(propriety.getColor().equals(color)){
+                                                System.out.println(propriety.getNumberOfHouse());
+                                                if(propriety.getNumberOfHouse()!=0){
+                                                    System.out.println("TEste");
+                                                    countHouses++;
+                                                }
+                                            }
+                                       }
+                                        
+                                       if(countHouses!=0){
+                                           million = p.getRental()/1000000;
+                    
+                                            if(million >=1){
+                                                txtPrice.setText(String.format("%.2fM", p.getRental()/ 1000000.0));
+                                            }else{
+                                                txtPrice.setText(String.format("%.2fK", p.getRental()/ 1000.0));
+                                            }
+                                       }else{
+                                           if(p.isHasHotel()){
+                                               million = p.getHotelRental()/1000000;
+                    
+                                                if(million >=1){
+                                                    txtPrice.setText(String.format("%.2fM", p.getHotelRental()/ 1000000.0));
+                                                }else{
+                                                    txtPrice.setText(String.format("%.2fK", p.getHotelRental()/ 1000.0));
+                                                }
+                                           }else{
+                                               million = (p.getRental()*2)/1000000;
+                    
+                                                if(million >=1){
+                                                    txtPrice.setText(String.format("%.2fM", (p.getRental()*2)/ 1000000.0));
+                                                }else{
+                                                    txtPrice.setText(String.format("%.2fK", (p.getRental()*2)/ 1000.0));
+                                                }
+                                           }
+                                           
+                                       }
+                                         
+                                    }
+                                break;
+                                case "Branco":
+                                    //Aeroporto
+                                    if(p.getName().contains("Aeroporto")){
+                                        switch(countAeroporto){
+                                            case 1:
+                                                million = p.getRental()/1000000;
+                    
+                                                if(million >=1){
+                                                    txtPrice.setText(String.format("%.2fM", p.getRental()/ 1000000.0));
+                                                }else{
+                                                    txtPrice.setText(String.format("%.2fK", p.getRental()/ 1000.0));
+                                                }  
+                                            break;
+                                            case 2:
+                                                million = p.getOneHouseRental()/1000000;
+                    
+                                                if(million >=1){
+                                                    txtPrice.setText(String.format("%.2fM", p.getOneHouseRental()/ 1000000.0));
+                                                }else{
+                                                    txtPrice.setText(String.format("%.2fK", p.getOneHouseRental()/ 1000.0));
+                                                }
+                                            break;
+                                            case 3:
+                                                million = p.getTwoHouseRental()/1000000;
+                    
+                                                if(million >=1){
+                                                    txtPrice.setText(String.format("%.2fM", p.getTwoHouseRental()/ 1000000.0));
+                                                }else{
+                                                    txtPrice.setText(String.format("%.2fK", p.getTwoHouseRental()/ 1000.0));
+                                                }
+                                            break;
+                                            case 4:
+                                                million = p.getTwoHouseRental()/1000000;
+                    
+                                                if(million >=1){
+                                                    txtPrice.setText(String.format("%.2fM", p.getThreeHouseRental()/ 1000000.0));
+                                                }else{
+                                                    txtPrice.setText(String.format("%.2fK", p.getThreeHouseRental()/ 1000.0));
+                                                }
+                                            break;
+                                        }
+                                    }else{
+                                        //services
+                                        switch(countServices){
+                                            case 1:
+                                                txtPrice.setText(p.getRental() +"x number of the dice");
+                                            break;
+                                            case 2:
+                                                txtPrice.setText(p.getOneHouseRental()+"x number of the dice");
+                                            break;
+                                        }
+                                    }
+                                break;
+                                case "Azul escuro":
+                                    if(count == 2){
+                                        million = p.getRental()/1000000;
+                    
+                                        if(million >=1){
+                                            txtPrice.setText(String.format("%.2fM", p.getPrice()/ 1000000.0));
+                                        }else{
+                                            txtPrice.setText(String.format("%.2fK", p.getPrice()/ 1000.0));
+                                        } 
+                                    }else{
+                                         million = (p.getRental()*2)/1000000;
+                    
+                                        if(million >=1){
+                                            txtPrice.setText(String.format("%.2fM", p.getPrice()/ 1000000.0));
+                                        }else{
+                                            txtPrice.setText(String.format("%.2fK", p.getPrice()/ 1000.0));
+                                        }  
+                                    }
+                                break;
+                                default:
+                                    //All color
+                                break;
+                            }
+                        break;
+                        case 1:
+                            million = p.getOneHouseRental()/1000000;
+                    
+                            if(million >=1){
+                                txtPrice.setText(String.format("%.2fM", p.getOneHouseRental()/ 1000000.0));
+                            }else{
+                                txtPrice.setText(String.format("%.2fK", p.getOneHouseRental()/ 1000.0));
+                            } 
+                        break;
+                        case 2:
+                            million = p.getTwoHouseRental()/1000000;
+                    
+                            if(million >=1){
+                                txtPrice.setText(String.format("%.2fM", p.getTwoHouseRental()/ 1000000.0));
+                            }else{
+                                txtPrice.setText(String.format("%.2fK", p.getTwoHouseRental()/ 1000.0));
+                            } 
+                        break;
+                        case 3:
+                            million = p.getThreeHouseRental()/1000000;
+                    
+                            if(million >=1){
+                                txtPrice.setText(String.format("%.2fM", p.getThreeHouseRental()/ 1000000.0));
+                            }else{
+                                txtPrice.setText(String.format("%.2fK", p.getThreeHouseRental()/ 1000.0));
+                            } 
+                        break;
+                        case 4:
+                            million = p.getFourHouseRental()/1000000;
+                    
+                            if(million >=1){
+                                txtPrice.setText(String.format("%.2fM", p.getFourHouseRental()/ 1000000.0));
+                            }else{
+                                txtPrice.setText(String.format("%.2fK", p.getFourHouseRental()/ 1000.0));
+                            } 
+                        break;
+                    }
+                }
+              
+        
+                
+            }
+        }
+        
     }
 }
