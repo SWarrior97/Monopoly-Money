@@ -441,7 +441,31 @@ public class ShowPropriety extends javax.swing.JDialog {
         
         for(Propriety p:AppManager.INSTANCE.getProprieties()){
             if(p.getName().equals(name)){
+                propriety = p;
+                color=p.getColor();
             }
         }
+        
+        for(Propriety p:player.getProprieties()){
+            if(p.getColor().equals(color)){
+                count ++;
+                if(p.getNumberOfHouse() != 0){
+                    countHouses ++;
+                }
+            }
+        }
+        
+        switch(color){
+            case "Castanho":
+                
+            break;
+            case "Azul escruo":
+            break;
+            case "Branco":
+            break;
+            default:
+            break;
+        }
+        
    }
 }
