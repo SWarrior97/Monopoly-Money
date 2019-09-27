@@ -268,7 +268,7 @@ public class ShowPropriety extends javax.swing.JDialog {
                         showError(2);
                     }
                 }else if(color.equals("Azul Escuro")){
-                    for(Propriety p1:AppManager.INSTANCE.getProprieties()){
+                    for(Propriety p1:player.getProprieties()){
                         if(p1.getColor().equals("Azul Escuro")){
                             count++;
                         }
@@ -300,7 +300,42 @@ public class ShowPropriety extends javax.swing.JDialog {
                 }else if(color.equals("Branco")){
                     showError(3);
                 }else{
+                    //all propriety
+                    for(Propriety p1:player.getProprieties()){
+                        if(!p1.getColor().equals("Azul Escuro")){
+                            if(!p1.getColor().equals("Castanho")){
+                                if(!p1.getColor().equals("Branco")){
+                                    if(p1.getColor().equals(color)){
+                                        count++;
+                                    }
+                                }
+                            }
+                        }
+                    }
                     
+                    if(count == 3){
+                        for(Propriety propriety1:AppManager.INSTANCE.getProprieties()){
+                            if(propriety1.getName().equals(name)){
+                                if(propriety1.getNumberOfHouse()!= 4){
+                                    float valor = player.getMoney();
+                            
+                                    if(valor<propriety1.getBuildHouse()){
+                                        showError(5);
+                                    }else{
+                                        propriety1.setNumberOfHouse(propriety1.getNumberOfHouse()+1);
+                                        player.setMoney(valor - propriety1.getBuildHouse());
+                                        window.setCurrentMoneyPLayer1();
+                                        window.setCurrentMoneyPLayer2();
+                                        setNumberOfHouse();
+                                    }
+                                }else{
+                                    showError(4);
+                                }
+                            }
+                        }
+                    }else{
+                        showError(2);
+                    }
                 }
             }
         }
@@ -360,7 +395,7 @@ public class ShowPropriety extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, message);
             break;
             case 4:
-                message ="Alerady have 4 house";
+                message ="Already have 4 house";
                 JOptionPane.showMessageDialog(this, message);
             break;
             case 5:
