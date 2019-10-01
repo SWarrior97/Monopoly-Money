@@ -23,6 +23,8 @@ public class ShowPropriety extends javax.swing.JDialog {
     private Player player;
     private String name;
     private PlayersWindow window;
+    private int position;
+    private float money;
     /**
      * Creates new form ShowPropriety
      */
@@ -30,6 +32,7 @@ public class ShowPropriety extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.parent = parent;
+        this.position=position;
         this.player = AppManager.INSTANCE.getPlayers(position);
         this.window = window;
         init();
@@ -50,12 +53,13 @@ public class ShowPropriety extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lblhouse = new javax.swing.JLabel();
         txtNumberOfHouse = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblHotel = new javax.swing.JLabel();
         txtHotel = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -95,11 +99,11 @@ public class ShowPropriety extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setText("Number of house:");
+        lblhouse.setText("Number of house:");
 
         txtNumberOfHouse.setEditable(false);
 
-        jLabel3.setText("Hotel");
+        lblHotel.setText("Hotel");
 
         txtHotel.setEditable(false);
 
@@ -107,27 +111,36 @@ public class ShowPropriety extends javax.swing.JDialog {
 
         txtPrice.setEditable(false);
 
+        jButton5.setText("Pay");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbProprieties, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-                            .addComponent(txtHotel)
-                            .addComponent(txtNumberOfHouse))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton5)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(cbProprieties, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblhouse)
+                                .addComponent(lblHotel)
+                                .addComponent(jLabel4))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                                .addComponent(txtHotel)
+                                .addComponent(txtNumberOfHouse)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,17 +163,19 @@ public class ShowPropriety extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
+                        .addComponent(lblhouse)
                         .addComponent(txtNumberOfHouse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(lblHotel)
                     .addComponent(txtHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addContainerGap())
         );
@@ -288,6 +303,7 @@ public class ShowPropriety extends javax.swing.JDialog {
                                 window.setCurrentMoneyPLayer1();
                                 window.setCurrentMoneyPLayer2();
                                 setNumberOfHouse();
+                                setPrice();
                             }
                             
                         }
@@ -326,6 +342,7 @@ public class ShowPropriety extends javax.swing.JDialog {
                                         window.setCurrentMoneyPLayer1();
                                         window.setCurrentMoneyPLayer2();
                                         setNumberOfHouse();
+                                        setPrice();
                                     }
                                 }else{
                                     showError(4);
@@ -340,6 +357,36 @@ public class ShowPropriety extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        Float price = money;
+        Propriety propriety;
+        Player player2;
+        
+         for(Propriety p1:AppManager.INSTANCE.getProprieties()){
+             if(p1.getName().equals(name)){
+                 propriety = p1;
+             }
+         }
+         
+          if(position == 0){
+              player2 = AppManager.INSTANCE.getPlayers(1);
+          }else{
+               player2 = AppManager.INSTANCE.getPlayers(0);
+          }
+         
+         if(player.getMoney()< price){
+             showError(7);
+         }else{
+            float payPrice = player.getMoney() + price;
+            player.setMoney(payPrice);
+            float money = player2.getMoney();
+            player2.setMoney(money - price);
+            window.setCurrentMoneyPLayer1();
+            window.setCurrentMoneyPLayer2();
+            closeWindow();
+         }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -351,10 +398,11 @@ public class ShowPropriety extends javax.swing.JDialog {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblHotel;
+    private javax.swing.JLabel lblhouse;
     private javax.swing.JTextField txtHotel;
     private javax.swing.JTextField txtNumberOfHouse;
     private javax.swing.JTextField txtPrice;
@@ -405,6 +453,10 @@ public class ShowPropriety extends javax.swing.JDialog {
                 message ="Player "+player.getName()+" dont have money to buy a hotel";
                 JOptionPane.showMessageDialog(this, message);
             break;
+                case 7:
+                message ="Player "+player.getName()+" dont have money";
+                JOptionPane.showMessageDialog(this, message);
+            break;
         } 
     }
     
@@ -432,7 +484,7 @@ public class ShowPropriety extends javax.swing.JDialog {
    private void setPrice() {
        String color = null;
         Propriety propriety = null;
-        int count=0,countHouses = 0;
+        int count=0,countHouses = 0,countAeroporto =0,countServices=0;
        
        for(Propriety p:AppManager.INSTANCE.getProprieties()){
             if(p.getName().equals(name)){
@@ -492,6 +544,35 @@ public class ShowPropriety extends javax.swing.JDialog {
                 }
             break;
             case "Branco":
+                
+                for(Propriety p:player.getProprieties()){
+                    if(p.getName().contains("Aeroporto")){
+                        countAeroporto++;
+                    }else{
+                        countServices++;
+                    }
+                }
+                
+                switch(countAeroporto){
+                    case 1:
+                        showMillion(propriety.getRental());
+                    break;
+                    case 2:
+                        showMillion(propriety.getOneHouseRental());
+                    break;
+                    case 3:
+                         showMillion(propriety.getTwoHouseRental());
+                    break;
+                    case 4:
+                         showMillion(propriety.getThreeHouseRental());
+                    break;
+                }
+                
+                if(countServices == 1){
+                    txtPrice.setText(propriety.getRental() +"x dice");
+                }else{
+                    txtPrice.setText(propriety.getOneHouseRental()+"x dice");
+                }
             break;
             case "Azul Escuro":
                 if(count == 2){
@@ -534,12 +615,51 @@ public class ShowPropriety extends javax.swing.JDialog {
                 }
             break;
             default:
+                if(count == 3){
+                     if(countHouses == 0){
+                         if(propriety.isHasHotel()){
+                             showMillion(propriety.getHotelRental());
+                         }else{
+                             showMillion(propriety.getRental()*2);
+                         }
+                     }else{
+                         switch(propriety.getNumberOfHouse()){
+                            case 0: 
+                                if(propriety.isHasHotel()){
+                                    showMillion(propriety.getHotelRental());
+                                }else{
+                                    if(countHouses > 0){
+                                        showMillion(propriety.getRental());
+                                    }else{
+                                       showMillion(propriety.getRental()*2); 
+                                    }
+                                }
+                                
+                            break;
+                            case 1:
+                                showMillion(propriety.getOneHouseRental());
+                            break;
+                            case 2:
+                                showMillion(propriety.getTwoHouseRental());
+                            break;
+                            case 3:
+                                showMillion(propriety.getThreeHouseRental());
+                            break;
+                            case 4:
+                                showMillion(propriety.getFourHouseRental());
+                            break;
+                         }
+                     }
+                }else{
+                    showMillion(propriety.getRental());
+                }
             break;
        }
    }
    
    private void showMillion(float money){
        float million = money/ 1000000;
+       this.money = money;
         
         if(million >=1){
             txtPrice.setText(String.format("%.2fM", money/ 1000000.0));
