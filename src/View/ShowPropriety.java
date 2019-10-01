@@ -9,6 +9,8 @@ import Model.AppManager;
 import Model.Player;
 import Model.Propriety;
 import Propriety.ProprietyCard;
+import View.ThreePlayer.PaymentWindowThree;
+import View.ThreePlayer.PlayersWindowThree;
 import View.TwoPlayer.PlayersWindow;
 import java.util.LinkedList;
 import javax.swing.DefaultComboBoxModel;
@@ -23,6 +25,7 @@ public class ShowPropriety extends javax.swing.JDialog {
     private Player player;
     private String name;
     private PlayersWindow window;
+     private PlayersWindowThree windowThree;
     private int position;
     private float money;
     /**
@@ -35,6 +38,16 @@ public class ShowPropriety extends javax.swing.JDialog {
         this.position=position;
         this.player = AppManager.INSTANCE.getPlayers(position);
         this.window = window;
+        init();
+    }
+    
+    public ShowPropriety(java.awt.Frame parent, boolean modal,int position,PlayersWindowThree window) {
+        super(parent, modal);
+        initComponents();
+        this.parent = parent;
+        this.position=position;
+        this.player = AppManager.INSTANCE.getPlayers(position);
+        this.windowThree = window;
         init();
     }
 
@@ -273,8 +286,20 @@ public class ShowPropriety extends javax.swing.JDialog {
                                 }*/
                                 propriety.setNumberOfHouse(propriety.getNumberOfHouse()+1);
                                 player.setMoney(valor - propriety.getBuildHouse());
-                                window.setCurrentMoneyPLayer1();
-                                window.setCurrentMoneyPLayer2();
+                                
+                                if(window == null){
+                                    if(windowThree != null){
+                                         windowThree.setCurrentMoneyPLayer1();
+                                         windowThree.setCurrentMoneyPLayer2();
+                                          windowThree.setCurrentMoneyPLayer3();
+                                    } else{
+                                        //janela four
+                                    }
+                                 }else{
+                                     window.setCurrentMoneyPLayer1();
+                                     window.setCurrentMoneyPLayer2();
+                                 }
+                               
                                 setNumberOfHouse();
                                 setPrice();
                             }
@@ -300,8 +325,19 @@ public class ShowPropriety extends javax.swing.JDialog {
                             }else{
                                 propriety.setNumberOfHouse(propriety.getNumberOfHouse()+1);
                                 player.setMoney(valor - propriety.getBuildHouse());
-                                window.setCurrentMoneyPLayer1();
-                                window.setCurrentMoneyPLayer2();
+                                
+                                if(window == null){
+                                    if(windowThree != null){
+                                         windowThree.setCurrentMoneyPLayer1();
+                                         windowThree.setCurrentMoneyPLayer2();
+                                          windowThree.setCurrentMoneyPLayer3();
+                                    } else{
+                                        //janela four
+                                    }
+                                 }else{
+                                     window.setCurrentMoneyPLayer1();
+                                     window.setCurrentMoneyPLayer2();
+                                 }
                                 setNumberOfHouse();
                                 setPrice();
                             }
@@ -339,8 +375,19 @@ public class ShowPropriety extends javax.swing.JDialog {
                                     }else{
                                         propriety1.setNumberOfHouse(propriety1.getNumberOfHouse()+1);
                                         player.setMoney(valor - propriety1.getBuildHouse());
-                                        window.setCurrentMoneyPLayer1();
-                                        window.setCurrentMoneyPLayer2();
+                                        
+                                        if(window == null){
+                                            if(windowThree != null){
+                                                 windowThree.setCurrentMoneyPLayer1();
+                                                 windowThree.setCurrentMoneyPLayer2();
+                                                  windowThree.setCurrentMoneyPLayer3();
+                                            } else{
+                                                //janela four
+                                            }
+                                         }else{
+                                             window.setCurrentMoneyPLayer1();
+                                             window.setCurrentMoneyPLayer2();
+                                         }
                                         setNumberOfHouse();
                                         setPrice();
                                     }
@@ -358,32 +405,45 @@ public class ShowPropriety extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Float price = money;
-        Propriety propriety;
-        Player player2;
-        
-         for(Propriety p1:AppManager.INSTANCE.getProprieties()){
-             if(p1.getName().equals(name)){
-                 propriety = p1;
-             }
-         }
+         Float price = money;
          
-          if(position == 0){
-              player2 = AppManager.INSTANCE.getPlayers(1);
-          }else{
-               player2 = AppManager.INSTANCE.getPlayers(0);
-          }
-         
-         if(player.getMoney()< price){
-             showError(7);
+        if(window == null){
+            if(windowThree != null){
+                 //janela tres
+                
+            } else{
+                //janela four
+            }
          }else{
-            float payPrice = player.getMoney() + price;
-            player.setMoney(payPrice);
-            float money = player2.getMoney();
-            player2.setMoney(money - price);
-            window.setCurrentMoneyPLayer1();
-            window.setCurrentMoneyPLayer2();
-            closeWindow();
+             //janela dois
+           
+            Propriety propriety;
+            Player player2;
+
+             for(Propriety p1:AppManager.INSTANCE.getProprieties()){
+                 if(p1.getName().equals(name)){
+                     propriety = p1;
+                 }
+             }
+
+              if(position == 0){
+                  player2 = AppManager.INSTANCE.getPlayers(1);
+              }else{
+                   player2 = AppManager.INSTANCE.getPlayers(0);
+              }
+
+             if(player.getMoney()< price){
+                 showError(7);
+             }else{
+                float payPrice = player.getMoney() + price;
+                player.setMoney(payPrice);
+                float money = player2.getMoney();
+                player2.setMoney(money - price);
+                window.setCurrentMoneyPLayer1();
+                window.setCurrentMoneyPLayer2();
+
+                closeWindow();
+             }
          }
     }//GEN-LAST:event_jButton5ActionPerformed
 

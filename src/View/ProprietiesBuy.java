@@ -9,6 +9,7 @@ import Model.AppManager;
 import Model.Player;
 import Model.Propriety;
 import Propriety.ProprietyCard;
+import View.ThreePlayer.PlayersWindowThree;
 import View.TwoPlayer.PlayersWindow;
 import java.awt.Color;
 import java.util.LinkedList;
@@ -26,6 +27,7 @@ public class ProprietiesBuy extends javax.swing.JDialog {
     private String name;
     private java.awt.Frame parent;
     private PlayersWindow window;
+    private PlayersWindowThree windowThree;
 
     /**
      * Creates new form ProprietiesBuy
@@ -39,6 +41,16 @@ public class ProprietiesBuy extends javax.swing.JDialog {
         this.player = AppManager.INSTANCE.getPlayers(position);
         init();
         
+    }
+    
+    public ProprietiesBuy(java.awt.Frame parent, boolean modal,int position,PlayersWindowThree window) {
+        super(parent, modal);
+        initComponents();
+        this.position = position;
+        this.parent = parent;
+        this.windowThree=window;
+        this.player = AppManager.INSTANCE.getPlayers(position);
+        init();
     }
 
     /**
@@ -202,8 +214,20 @@ public class ProprietiesBuy extends javax.swing.JDialog {
                    System.out.println();
                 }
             }
-            window.setCurrentMoneyPLayer1();
-            window.setCurrentMoneyPLayer2();
+            
+            if(window == null){
+               if(windowThree != null){
+                    windowThree.setCurrentMoneyPLayer1();
+                    windowThree.setCurrentMoneyPLayer2();
+                     windowThree.setCurrentMoneyPLayer3();
+               } else{
+                   //janela four
+               }
+            }else{
+                window.setCurrentMoneyPLayer1();
+                window.setCurrentMoneyPLayer2();
+            }
+            
             closeWindow();
            
         }

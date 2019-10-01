@@ -52,8 +52,8 @@ public class PaymentWindowThree extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblPayer = new javax.swing.JLabel();
+        lblReceiver = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtPayer = new javax.swing.JTextField();
         txtQuantity = new javax.swing.JTextField();
@@ -63,9 +63,9 @@ public class PaymentWindowThree extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Payer:");
+        lblPayer.setText("Payer:");
 
-        jLabel2.setText("Receiver:");
+        lblReceiver.setText("Receiver:");
 
         jLabel3.setText("Quantity:");
 
@@ -93,12 +93,12 @@ public class PaymentWindowThree extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblPayer)
                         .addGap(42, 42, 42)
                         .addComponent(txtPayer, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(lblReceiver)
                             .addComponent(jLabel3))
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -117,11 +117,11 @@ public class PaymentWindowThree extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblPayer)
                     .addComponent(txtPayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblReceiver)
                     .addComponent(cbPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -385,9 +385,9 @@ public class PaymentWindowThree extends javax.swing.JDialog {
     private javax.swing.JComboBox cbPlayer;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblPayer;
+    private javax.swing.JLabel lblReceiver;
     private javax.swing.JTextField txtPayer;
     private javax.swing.JTextField txtQuantity;
     // End of variables declaration//GEN-END:variables
@@ -454,4 +454,6 @@ public class PaymentWindowThree extends javax.swing.JDialog {
             break;
         } 
     }
+
+  
 }
