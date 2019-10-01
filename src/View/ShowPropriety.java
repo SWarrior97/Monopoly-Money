@@ -273,7 +273,6 @@ public class ShowPropriety extends javax.swing.JDialog {
                             count++;
                         }
                     }
-                    
                     if(count ==2){
                         //Can buy house
                         if(p.getNumberOfHouse()== 4){
@@ -451,7 +450,6 @@ public class ShowPropriety extends javax.swing.JDialog {
            }
        }
        
-       System.out.println(countHouses);
        switch(color){
             case "Castanho":
                 if(count == 2){
@@ -459,7 +457,6 @@ public class ShowPropriety extends javax.swing.JDialog {
                          if(propriety.isHasHotel()){
                              showMillion(propriety.getHotelRental());
                          }else{
-                             System.out.println("Teste");
                              showMillion(propriety.getRental()*2);
                          }
                      }else{
@@ -496,7 +493,45 @@ public class ShowPropriety extends javax.swing.JDialog {
             break;
             case "Branco":
             break;
-            case "Azul escuro":
+            case "Azul Escuro":
+                if(count == 2){
+                     if(countHouses == 0){
+                         if(propriety.isHasHotel()){
+                             showMillion(propriety.getHotelRental());
+                         }else{
+                             showMillion(propriety.getRental()*2);
+                         }
+                     }else{
+                         switch(propriety.getNumberOfHouse()){
+                            case 0: 
+                                if(propriety.isHasHotel()){
+                                    showMillion(propriety.getHotelRental());
+                                }else{
+                                    if(countHouses > 0){
+                                        showMillion(propriety.getRental());
+                                    }else{
+                                       showMillion(propriety.getRental()*2); 
+                                    }
+                                }
+                                
+                            break;
+                            case 1:
+                                showMillion(propriety.getOneHouseRental());
+                            break;
+                            case 2:
+                                showMillion(propriety.getTwoHouseRental());
+                            break;
+                            case 3:
+                                showMillion(propriety.getThreeHouseRental());
+                            break;
+                            case 4:
+                                showMillion(propriety.getFourHouseRental());
+                            break;
+                         }
+                     }
+                }else{
+                    showMillion(propriety.getRental());
+                }
             break;
             default:
             break;
