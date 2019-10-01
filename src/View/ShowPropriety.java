@@ -431,41 +431,85 @@ public class ShowPropriety extends javax.swing.JDialog {
     }
 
    private void setPrice() {
-       int count = 0;
-        int countAeroporto = 0;
-        int countServices=0;
-        int countHouses=0;
-        
-        String color = null;
+       String color = null;
         Propriety propriety = null;
-        
-        for(Propriety p:AppManager.INSTANCE.getProprieties()){
+        int count=0,countHouses = 0;
+       
+       for(Propriety p:AppManager.INSTANCE.getProprieties()){
             if(p.getName().equals(name)){
                 propriety = p;
                 color=p.getColor();
             }
         }
-        
-        for(Propriety p:player.getProprieties()){
-            if(p.getColor().equals(color)){
-                count ++;
-                if(p.getNumberOfHouse() != 0){
-                    countHouses ++;
-                }
-            }
-        }
-        
-        switch(color){
+       
+       for(Propriety p:player.getProprieties()){
+           if(p.getColor().equals(color)){
+               count++;
+               if(p.getNumberOfHouse() > 0 || p.isHasHotel()){
+                   countHouses ++;
+               }
+           }
+       }
+       
+       System.out.println(countHouses);
+       switch(color){
             case "Castanho":
-                
-            break;
-            case "Azul escruo":
+                if(count == 2){
+                     if(countHouses == 0){
+                         if(propriety.isHasHotel()){
+                             showMillion(propriety.getHotelRental());
+                         }else{
+                             System.out.println("Teste");
+                             showMillion(propriety.getRental()*2);
+                         }
+                     }else{
+                         switch(propriety.getNumberOfHouse()){
+                            case 0: 
+                                if(propriety.isHasHotel()){
+                                    showMillion(propriety.getHotelRental());
+                                }else{
+                                    if(countHouses > 0){
+                                        showMillion(propriety.getRental());
+                                    }else{
+                                       showMillion(propriety.getRental()*2); 
+                                    }
+                                }
+                                
+                            break;
+                            case 1:
+                                showMillion(propriety.getOneHouseRental());
+                            break;
+                            case 2:
+                                showMillion(propriety.getTwoHouseRental());
+                            break;
+                            case 3:
+                                showMillion(propriety.getThreeHouseRental());
+                            break;
+                            case 4:
+                                showMillion(propriety.getFourHouseRental());
+                            break;
+                         }
+                     }
+                }else{
+                    showMillion(propriety.getRental());
+                }
             break;
             case "Branco":
             break;
+            case "Azul escuro":
+            break;
             default:
             break;
-        }
+       }
+   }
+   
+   private void showMillion(float money){
+       float million = money/ 1000000;
         
+        if(million >=1){
+            txtPrice.setText(String.format("%.2fM", money/ 1000000.0));
+        }else{
+            txtPrice.setText(String.format("%.2fK", money/ 1000.0));
+        }
    }
 }
