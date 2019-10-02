@@ -9,6 +9,7 @@ import Model.AppManager;
 import Model.Player;
 import Model.Propriety;
 import Propriety.ProprietyCard;
+import View.FourPlayer.PlayersWindowFour;
 import View.ThreePlayer.PaymentWindowThree;
 import View.ThreePlayer.PlayersWindowThree;
 import View.TwoPlayer.PlayersWindow;
@@ -25,7 +26,8 @@ public class ShowPropriety extends javax.swing.JDialog {
     private Player player;
     private String name;
     private PlayersWindow window;
-     private PlayersWindowThree windowThree;
+    private PlayersWindowThree windowThree;
+    private PlayersWindowFour windowFour;
     private int position;
     private float money;
     /**
@@ -48,6 +50,16 @@ public class ShowPropriety extends javax.swing.JDialog {
         this.position=position;
         this.player = AppManager.INSTANCE.getPlayers(position);
         this.windowThree = window;
+        init();
+    }
+    
+    public ShowPropriety(java.awt.Frame parent, boolean modal,int position,PlayersWindowFour windowFour) {
+        super(parent, modal);
+        initComponents();
+        this.parent = parent;
+        this.position=position;
+        this.player = AppManager.INSTANCE.getPlayers(position);
+        this.windowFour = windowFour;
         init();
     }
 
@@ -410,9 +422,12 @@ public class ShowPropriety extends javax.swing.JDialog {
         if(window == null){
             if(windowThree != null){
                  //janela tres
-                
+                PaymentPropriety payment = new PaymentPropriety(parent, true,windowThree,price,player);
+                payment.setVisible(true);
             } else{
                 //janela four
+                PaymentPropriety payment = new PaymentPropriety(parent, true,windowFour,price,player);
+                payment.setVisible(true);
             }
          }else{
              //janela dois
