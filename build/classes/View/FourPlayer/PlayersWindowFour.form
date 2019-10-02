@@ -28,9 +28,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButton25" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -42,12 +46,11 @@
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace pref="314" max="32767" attributes="0"/>
+                              <EmptySpace pref="274" max="32767" attributes="0"/>
                               <Component id="player2nameThree" min="-2" pref="145" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               <Component id="txtMoneyRentPlayer1" min="-2" pref="62" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -56,7 +59,9 @@
                                           <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jButton2" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="3" pref="161" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jButton26" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -116,10 +121,14 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jButton7" max="32767" attributes="0"/>
-                              <Component id="jButton6" max="32767" attributes="0"/>
-                              <Component id="jButton12" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jButton7" max="32767" attributes="0"/>
+                                  <Component id="jButton6" max="32767" attributes="0"/>
+                                  <Component id="jButton12" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jButton27" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -136,19 +145,21 @@
                               <Component id="JailCountPLayer3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="player3nameThree" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Component id="jButton24" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
-                              <Component id="jButton23" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jButton24" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                          <Component id="jButton23" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jButton13" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jButton8" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jButton9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jButton13" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jButton8" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jButton9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jButton28" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -198,7 +209,10 @@
                           <Component id="txtMoneyRentPlayer1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton25" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
@@ -212,7 +226,10 @@
                           <Component id="txtMoneyRentPlayer2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton26" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
@@ -259,7 +276,10 @@
                           <Component id="txtMoneyRentPlayer4" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton8" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton28" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton9" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -279,7 +299,10 @@
                           <Component id="txtMoneyRentPlayer3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton27" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -664,6 +687,38 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton24ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton25">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Start Point"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton25ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton26">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Start Point"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton26ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton27">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Start Point"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton27ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton28">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Start Point"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton28ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
