@@ -6,6 +6,7 @@
 package Propriety;
 
 import Model.Propriety;
+import javax.swing.JLabel;
 
 /**
  *
@@ -20,6 +21,7 @@ public class AeroportCard extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.propriety = propriety;
+        init();
     }
 
     /**
@@ -31,17 +33,107 @@ public class AeroportCard extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblAluguer = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        lblMortgage = new javax.swing.JLabel();
+        lbl2Aeroportos = new javax.swing.JLabel();
+        lbl3Aeroportos = new javax.swing.JLabel();
+        lbl4Aeroportos = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/plane.jpg"))); // NOI18N
+
+        lblName.setText("jLabel1");
+
+        jLabel1.setText("ALUGUER");
+
+        lblAluguer.setText("jLabel3");
+
+        jLabel3.setText("Se tem 2 Aeroportos");
+
+        jLabel4.setText("Se tem 3 Aeroportos");
+
+        jLabel5.setText("Se tem 4 Aeroportos");
+
+        jLabel6.setText("VALOR DA HIPOTECA - ");
+
+        lblMortgage.setText("jLabel7");
+
+        lbl2Aeroportos.setText("jLabel7");
+
+        lbl3Aeroportos.setText("jLabel8");
+
+        lbl4Aeroportos.setText("jLabel9");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMortgage))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addGap(167, 167, 167)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl4Aeroportos)
+                                    .addComponent(lbl3Aeroportos)
+                                    .addComponent(lbl2Aeroportos)
+                                    .addComponent(lblAluguer)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(lblName)))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblName)
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lblAluguer))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(lbl2Aeroportos))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(lbl3Aeroportos))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(lbl4Aeroportos))
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(lblMortgage))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -53,5 +145,36 @@ public class AeroportCard extends javax.swing.JDialog {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel lbl2Aeroportos;
+    private javax.swing.JLabel lbl3Aeroportos;
+    private javax.swing.JLabel lbl4Aeroportos;
+    private javax.swing.JLabel lblAluguer;
+    private javax.swing.JLabel lblMortgage;
+    private javax.swing.JLabel lblName;
     // End of variables declaration//GEN-END:variables
+
+    private void init() {
+        lblName.setText(propriety.getName());
+        showMillion(propriety.getRental(),lblAluguer);
+        showMillion(propriety.getOneHouseRental(),lbl2Aeroportos);
+        showMillion(propriety.getTwoHouseRental(),lbl3Aeroportos);
+        showMillion(propriety.getThreeHouseRental(),lbl4Aeroportos);
+        showMillion(propriety.getMortgage(),lblMortgage);
+    }
+    
+    private void showMillion(float money,JLabel label){
+       float million = money/ 1000000;
+        
+        if(million >=1){
+            label.setText(String.format("%.2fM", money/ 1000000.0));
+        }else{
+            label.setText(String.format("%.2fK", money/ 1000.0));
+        }
+   }
 }

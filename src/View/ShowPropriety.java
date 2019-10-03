@@ -8,7 +8,10 @@ package View;
 import Model.AppManager;
 import Model.Player;
 import Model.Propriety;
+import Propriety.AeroportCard;
 import Propriety.ProprietyCard;
+import Propriety.InternetService;
+import Propriety.PhoneService;
 import View.FourPlayer.PlayersWindowFour;
 import View.ThreePlayer.PaymentWindowThree;
 import View.ThreePlayer.PlayersWindowThree;
@@ -85,6 +88,9 @@ public class ShowPropriety extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
+        btnMortagage = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtMortgage = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -143,35 +149,51 @@ public class ShowPropriety extends javax.swing.JDialog {
             }
         });
 
+        btnMortagage.setText("mortgage");
+        btnMortagage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMortagageActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Mortgage:");
+
+        txtMortgage.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton5)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(cbProprieties, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblhouse)
-                                .addComponent(lblHotel)
-                                .addComponent(jLabel4))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-                                .addComponent(txtHotel)
-                                .addComponent(txtNumberOfHouse)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbProprieties, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnMortagage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton5)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblhouse)
+                                    .addComponent(lblHotel)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtPrice)
+                                    .addComponent(txtHotel)
+                                    .addComponent(txtMortgage)
+                                    .addComponent(txtNumberOfHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -184,23 +206,28 @@ public class ShowPropriety extends javax.swing.JDialog {
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblhouse)
                         .addComponent(txtNumberOfHouse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblHotel)
-                    .addComponent(txtHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMortagage))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtMortgage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGap(4, 4, 4)
                 .addComponent(jButton4)
                 .addContainerGap())
         );
@@ -223,11 +250,29 @@ public class ShowPropriety extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Propriety propriety = null;
         if(name.contains("Aeroporto")){
-            //TODO
+            for(Propriety p:AppManager.INSTANCE.getProprieties()){
+                if(p.getName().equals(name)){
+                    propriety=p;
+                    AeroportCard card = new AeroportCard(parent,true,propriety);
+                    card.setVisible(true);
+                }
+            }
         }else if(name.contains("Internet")){
-            //TODO
+            for(Propriety p:AppManager.INSTANCE.getProprieties()){
+                if(p.getName().equals(name)){
+                    propriety=p;
+                    InternetService card = new InternetService(parent,true,propriety);
+                    card.setVisible(true);
+                }
+            }
         }else if(name.contains("Telemóveis")){
-            //TODO
+            for(Propriety p:AppManager.INSTANCE.getProprieties()){
+                if(p.getName().equals(name)){
+                    propriety=p;
+                    PhoneService card = new PhoneService(parent,true,propriety);
+                    card.setVisible(true);
+                }
+            }
         }else{
             for(Propriety p:AppManager.INSTANCE.getProprieties()){
                 if(p.getName().equals(name)){
@@ -462,12 +507,135 @@ public class ShowPropriety extends javax.swing.JDialog {
          }
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void btnMortagageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMortagageActionPerformed
+        Propriety propriety = null;
+        String color = null;
+        int count = 0;
+        int countHouse=0;
+        for(Propriety p:AppManager.INSTANCE.getProprieties()){
+                if(p.getName().equals(name)){
+                    propriety = p;
+                    color = p.getColor();
+                    break;
+                }
+            }
+        
+        if(btnMortagage.getText().equals("Mortgage")){
+            //hipotecar
+            for(Propriety p:player.getProprieties()){
+                if(p.getColor().equals(color)){
+                    count ++;
+                    if(p.getNumberOfHouse()>0){
+                        countHouse++;
+                    }
+                }
+            }
+            
+            switch(color){
+                case "Branco":
+                    propriety.setIsMortgage(true);
+                    player.setMoney(player.getMoney() + propriety.getMortgage());
+                    txtMortgage.setText("Yes");
+                    btnMortagage.setText("Unpotify");
+                    break;
+                case "Castanho":
+                    if(count == 2){
+                        if(countHouse >0 ){
+                            showError(8);
+                        }else{
+                            propriety.setIsMortgage(true);
+                            player.setMoney(player.getMoney() + propriety.getMortgage());
+                            txtMortgage.setText("Yes");
+                             btnMortagage.setText("Unpotify");
+                        }
+                    }else{
+                        propriety.setIsMortgage(true);
+                        player.setMoney(player.getMoney() + propriety.getMortgage());
+                        txtMortgage.setText("Yes");
+                         btnMortagage.setText("Unpotify");
+                    }
+                    break;
+                case "Azul Escuro":
+                    if(count == 2){
+                        if(countHouse >0 ){
+                            showError(8);
+                        }else{
+                            propriety.setIsMortgage(true);
+                            player.setMoney(player.getMoney() + propriety.getMortgage());
+                            txtMortgage.setText("Yes");
+                             btnMortagage.setText("Unpotify");
+                        }
+                    }else{
+                        propriety.setIsMortgage(true);
+                        player.setMoney(player.getMoney() + propriety.getMortgage());
+                        txtMortgage.setText("Yes");
+                         btnMortagage.setText("Unpotify");
+                    }
+                    break;
+                default:
+                    if(count == 3){
+                        if(countHouse >0 ){
+                            showError(8);
+                        }else{
+                            propriety.setIsMortgage(true);
+                            player.setMoney(player.getMoney() + propriety.getMortgage());
+                            txtMortgage.setText("Yes");
+                             btnMortagage.setText("Unpotify");
+                        }
+                    }else{
+                        propriety.setIsMortgage(true);
+                        player.setMoney(player.getMoney() + propriety.getMortgage());
+                        txtMortgage.setText("Yes");
+                        btnMortagage.setText("Unpotify");
+                    }
+                break;
+            }
+            
+        }else{
+            //desipotecar
+            float tenPor =  (float) (0.1 * propriety.getMortgage());
+            float desipotecar = propriety.getMortgage()+ tenPor;
+            
+            if(player.getMoney()<desipotecar){
+                showError(7);
+            }else{
+                player.setMoney(player.getMoney() - desipotecar);
+                propriety.setIsMortgage(false);
+                txtMortgage.setText("No");
+                btnMortagage.setText("Mortgage");
+            }
+        }
+        
+        if(window == null){
+            if(windowThree != null){
+                 //janela tres
+                windowThree.setCurrentMoneyPLayer1();
+                windowThree.setCurrentMoneyPLayer2();
+                windowThree.setCurrentMoneyPLayer3();
+
+
+            } else{
+                //janela four
+                windowFour.setCurrentMoneyPLayer1();
+                windowFour.setCurrentMoneyPLayer2();
+                windowFour.setCurrentMoneyPLayer3();
+                windowFour.setCurrentMoneyPLayer4();
+                
+            }
+         }else{
+            //janela dois
+            window.setCurrentMoneyPLayer1();
+            window.setCurrentMoneyPLayer2();
+        }
+    }//GEN-LAST:event_btnMortagageActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMortagage;
     private javax.swing.JComboBox cbProprieties;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -475,10 +643,12 @@ public class ShowPropriety extends javax.swing.JDialog {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblHotel;
     private javax.swing.JLabel lblhouse;
     private javax.swing.JTextField txtHotel;
+    private javax.swing.JTextField txtMortgage;
     private javax.swing.JTextField txtNumberOfHouse;
     private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables
@@ -499,6 +669,14 @@ public class ShowPropriety extends javax.swing.JDialog {
         setHotel();
         setNumberOfHouse();
         setPrice();
+        
+        if(p.isIsMortgage()){
+            btnMortagage.setText("Unpotify");
+            txtMortgage.setText("Yes");
+        }else{
+            btnMortagage.setText("Mortgage");
+             txtMortgage.setText("No");
+        }
     }
 
     private void showError(int erro) {
@@ -528,8 +706,12 @@ public class ShowPropriety extends javax.swing.JDialog {
                 message ="Player "+player.getName()+" dont have money to buy a hotel";
                 JOptionPane.showMessageDialog(this, message);
             break;
-                case 7:
+            case 7:
                 message ="Player "+player.getName()+" dont have money";
+                JOptionPane.showMessageDialog(this, message);
+            break;
+            case 8:
+                message ="Can't mortgage because the propriety have house(s)";
                 JOptionPane.showMessageDialog(this, message);
             break;
         } 
