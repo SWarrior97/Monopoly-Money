@@ -810,25 +810,27 @@ public class ShowPropriety extends javax.swing.JDialog {
                     }
                 }
                 
-                switch(countAeroporto){
-                    case 1:
-                        showMillion(propriety.getRental());
-                    break;
-                    case 2:
-                        showMillion(propriety.getOneHouseRental());
-                    break;
-                    case 3:
-                         showMillion(propriety.getTwoHouseRental());
-                    break;
-                    case 4:
-                         showMillion(propriety.getThreeHouseRental());
-                    break;
-                }
-                
-                if(countServices == 1){
-                    txtPrice.setText(propriety.getRental() +"x dice");
+                if(name.contains("Aeroporto")){
+                    switch(countAeroporto){
+                      case 1:
+                          showMillion(propriety.getRental());
+                      break;
+                      case 2:
+                          showMillion(propriety.getOneHouseRental());
+                      break;
+                      case 3:
+                           showMillion(propriety.getTwoHouseRental());
+                      break;
+                      case 4:
+                           showMillion(propriety.getThreeHouseRental());
+                      break;
+                    }  
                 }else{
-                    txtPrice.setText(propriety.getOneHouseRental()+"x dice");
+                    if(countServices == 1){
+                        txtPrice.setText(propriety.getRental() +"x dice");
+                    }else{
+                        txtPrice.setText(propriety.getOneHouseRental()+"x dice");
+                    }
                 }
             break;
             case "Azul Escuro":
