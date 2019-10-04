@@ -8,6 +8,10 @@ package Propriety;
 import Model.AppManager;
 import Model.Player;
 import Model.Propriety;
+import View.FourPlayer.PlayersWindowFour;
+import View.ShowPropriety;
+import View.ThreePlayer.PlayersWindowThree;
+import View.TwoPlayer.PlayersWindow;
 import java.util.LinkedList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -19,14 +23,51 @@ import javax.swing.JOptionPane;
 public class SellPropriety extends javax.swing.JDialog {
     private Propriety propriety;
     private java.awt.Frame parent;
+    private PlayersWindow window;
+    private PlayersWindowThree windowThree;
+    private PlayersWindowFour windowFour;
+    private ShowPropriety show;
     /**
      * Creates new form SellPropriety
      */
-    public SellPropriety(java.awt.Frame parent, boolean modal,String name) {
+    public SellPropriety(java.awt.Frame parent, boolean modal,String name,PlayersWindow window,ShowPropriety show) {
         super(parent, modal);
         initComponents();
         this.parent = parent;
+        this.window = window;
+        this.show = show;
+        for(Propriety p:AppManager.INSTANCE.getProprieties()){
+            if(p.getName().equals(name)){
+               propriety=p;
+               break;
+            }
+        }
         
+        init();
+    }
+    
+    public SellPropriety(java.awt.Frame parent, boolean modal,String name,PlayersWindowThree windowThree,ShowPropriety show) {
+        super(parent, modal);
+        initComponents();
+        this.parent = parent;
+        this.windowThree=windowThree;
+        this.show = show;
+        for(Propriety p:AppManager.INSTANCE.getProprieties()){
+            if(p.getName().equals(name)){
+               propriety=p;
+               break;
+            }
+        }
+        
+        init();
+    }
+    
+    public SellPropriety(java.awt.Frame parent, boolean modal,String name,PlayersWindowFour windowFour,ShowPropriety show) {
+        super(parent, modal);
+        initComponents();
+        this.parent = parent;
+        this.windowFour = windowFour;
+        this.show = show;
         for(Propriety p:AppManager.INSTANCE.getProprieties()){
             if(p.getName().equals(name)){
                propriety=p;
@@ -193,6 +234,8 @@ public class SellPropriety extends javax.swing.JDialog {
              }else{
                  propriety.setOwner(player);
                  owner.setMoney(owner.getMoney() + money);
+                 owner.removePropriety(propriety);
+                 player.addPropriety(propriety);
                  player.setMoney(player.getMoney() - money);
                  closeWindow();
              }
@@ -214,6 +257,8 @@ public class SellPropriety extends javax.swing.JDialog {
                          propriety.setOwner(player);
                          owner.setMoney(owner.getMoney() + money);
                          player.setMoney(player.getMoney() - money);
+                         owner.removePropriety(propriety);
+                         player.addPropriety(propriety);
                          closeWindow();
                      }
                 }
@@ -236,6 +281,8 @@ public class SellPropriety extends javax.swing.JDialog {
                          propriety.setOwner(player);
                          owner.setMoney(owner.getMoney() + money);
                          player.setMoney(player.getMoney() - money);
+                         owner.removePropriety(propriety);
+                         player.addPropriety(propriety);
                          closeWindow();
                      }
                 }
@@ -258,12 +305,17 @@ public class SellPropriety extends javax.swing.JDialog {
                          propriety.setOwner(player);
                          owner.setMoney(owner.getMoney() + money);
                          player.setMoney(player.getMoney() - money);
+                         owner.removePropriety(propriety);
+                         player.addPropriety(propriety);
                          closeWindow();
                      }
                 }
             }
         break;
       }
+      
+      updateWindow();
+      show.UpdateProprieties();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -317,4 +369,28 @@ public class SellPropriety extends javax.swing.JDialog {
             break;
         }
     }
+    
+    private void updateWindow(){
+       if(window == null){
+            if(windowThree != null){
+                 //janela tres
+                windowThree.setCurrentMoneyPLayer1();
+                windowThree.setCurrentMoneyPLayer2();
+                windowThree.setCurrentMoneyPLayer3();
+
+
+            } else{
+                //janela four
+                windowFour.setCurrentMoneyPLayer1();
+                windowFour.setCurrentMoneyPLayer2();
+                windowFour.setCurrentMoneyPLayer3();
+                windowFour.setCurrentMoneyPLayer4();
+                
+            }
+         }else{
+            //janela dois
+            window.setCurrentMoneyPLayer1();
+            window.setCurrentMoneyPLayer2();
+        }
+   }
 }
