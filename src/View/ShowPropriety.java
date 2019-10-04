@@ -369,29 +369,9 @@ public class ShowPropriety extends javax.swing.JDialog {
                             if(valor<propriety.getBuildHouse()){
                                 showError(5);
                             }else{
-                                /*for(Propriety p1:player.getProprieties()){
-                                    if(p1.getColor().equals("Castanho")){
-                                        if(!p1.getName().equals(name)){
-                                            
-                                        }
-                                    }
-                                }*/
                                 propriety.setNumberOfHouse(propriety.getNumberOfHouse()+1);
                                 player.setMoney(valor - propriety.getBuildHouse());
-                                
-                                if(window == null){
-                                    if(windowThree != null){
-                                         windowThree.setCurrentMoneyPLayer1();
-                                         windowThree.setCurrentMoneyPLayer2();
-                                          windowThree.setCurrentMoneyPLayer3();
-                                    } else{
-                                        //janela four
-                                    }
-                                 }else{
-                                     window.setCurrentMoneyPLayer1();
-                                     window.setCurrentMoneyPLayer2();
-                                 }
-                               
+                                updateWindow();
                                 setNumberOfHouse();
                                 setPrice();
                             }
@@ -417,19 +397,7 @@ public class ShowPropriety extends javax.swing.JDialog {
                             }else{
                                 propriety.setNumberOfHouse(propriety.getNumberOfHouse()+1);
                                 player.setMoney(valor - propriety.getBuildHouse());
-                                
-                                if(window == null){
-                                    if(windowThree != null){
-                                         windowThree.setCurrentMoneyPLayer1();
-                                         windowThree.setCurrentMoneyPLayer2();
-                                          windowThree.setCurrentMoneyPLayer3();
-                                    } else{
-                                        //janela four
-                                    }
-                                 }else{
-                                     window.setCurrentMoneyPLayer1();
-                                     window.setCurrentMoneyPLayer2();
-                                 }
+                                updateWindow();
                                 setNumberOfHouse();
                                 setPrice();
                             }
@@ -467,19 +435,7 @@ public class ShowPropriety extends javax.swing.JDialog {
                                     }else{
                                         propriety1.setNumberOfHouse(propriety1.getNumberOfHouse()+1);
                                         player.setMoney(valor - propriety1.getBuildHouse());
-                                        
-                                        if(window == null){
-                                            if(windowThree != null){
-                                                 windowThree.setCurrentMoneyPLayer1();
-                                                 windowThree.setCurrentMoneyPLayer2();
-                                                  windowThree.setCurrentMoneyPLayer3();
-                                            } else{
-                                                //janela four
-                                            }
-                                         }else{
-                                             window.setCurrentMoneyPLayer1();
-                                             window.setCurrentMoneyPLayer2();
-                                         }
+                                        updateWindow();
                                         setNumberOfHouse();
                                         setPrice();
                                     }
@@ -641,27 +597,7 @@ public class ShowPropriety extends javax.swing.JDialog {
             }
         }
         
-        if(window == null){
-            if(windowThree != null){
-                 //janela tres
-                windowThree.setCurrentMoneyPLayer1();
-                windowThree.setCurrentMoneyPLayer2();
-                windowThree.setCurrentMoneyPLayer3();
-
-
-            } else{
-                //janela four
-                windowFour.setCurrentMoneyPLayer1();
-                windowFour.setCurrentMoneyPLayer2();
-                windowFour.setCurrentMoneyPLayer3();
-                windowFour.setCurrentMoneyPLayer4();
-                
-            }
-         }else{
-            //janela dois
-            window.setCurrentMoneyPLayer1();
-            window.setCurrentMoneyPLayer2();
-        }
+        updateWindow();
     }//GEN-LAST:event_btnMortagageActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -674,11 +610,31 @@ public class ShowPropriety extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+       for(Propriety p:AppManager.INSTANCE.getProprieties()){
+            if(p.getName().equals(name)){
+                if(p.isHasHotel()){
+                    player.setMoney(player.getMoney() + p.getBuildHouse());
+                    p.setHasHotel(false);
+                    updateWindow();
+                }else{
+                    showError(9);
+                }
+            }
+       }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        for(Propriety p:AppManager.INSTANCE.getProprieties()){
+            if(p.getName().equals(name)){
+                if(p.getNumberOfHouse() > 0){
+                    player.setMoney(player.getMoney() + p.getBuildHouse());
+                    p.setNumberOfHouse(p.getNumberOfHouse() - 1);
+                    updateWindow();
+                }else{
+                    showError(9);
+                }
+            }
+       }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
@@ -767,6 +723,10 @@ public class ShowPropriety extends javax.swing.JDialog {
             break;
             case 8:
                 message ="Can't mortgage because the propriety have house(s)";
+                JOptionPane.showMessageDialog(this, message);
+            break;
+            case 9:
+                message ="The propriety dont have hotel to sell";
                 JOptionPane.showMessageDialog(this, message);
             break;
         } 
@@ -979,6 +939,30 @@ public class ShowPropriety extends javax.swing.JDialog {
             txtPrice.setText(String.format("%.2fM", money/ 1000000.0));
         }else{
             txtPrice.setText(String.format("%.2fK", money/ 1000.0));
+        }
+   }
+   
+   private void updateWindow(){
+       if(window == null){
+            if(windowThree != null){
+                 //janela tres
+                windowThree.setCurrentMoneyPLayer1();
+                windowThree.setCurrentMoneyPLayer2();
+                windowThree.setCurrentMoneyPLayer3();
+
+
+            } else{
+                //janela four
+                windowFour.setCurrentMoneyPLayer1();
+                windowFour.setCurrentMoneyPLayer2();
+                windowFour.setCurrentMoneyPLayer3();
+                windowFour.setCurrentMoneyPLayer4();
+                
+            }
+         }else{
+            //janela dois
+            window.setCurrentMoneyPLayer1();
+            window.setCurrentMoneyPLayer2();
         }
    }
 }
