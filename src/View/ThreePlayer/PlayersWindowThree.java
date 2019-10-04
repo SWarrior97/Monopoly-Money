@@ -6,6 +6,8 @@
 package View.ThreePlayer;
 
 import Model.AppManager;
+import Model.Player;
+import Model.Propriety;
 import View.AddMoney;
 import View.Dice;
 import View.ProprietiesBuy;
@@ -646,33 +648,90 @@ public class PlayersWindowThree extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        ShowPropriety show = new ShowPropriety(parent, true,2,this);
-        show.setVisible(true);
+        Player player = AppManager.INSTANCE.getPlayers(2);
+        
+        if(player.getProprieties().size() != 0){
+            ShowPropriety show = new ShowPropriety(parent, true,2,this);
+            show.setVisible(true);
+        }else{
+            showError(1);
+        }
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        ProprietiesBuy buy = new ProprietiesBuy(parent, true, 2,this);
-        buy.setVisible(true);
+        boolean hasProprietyToBuy = false;
+        
+        for(Propriety p:AppManager.INSTANCE.getProprieties()){
+            if(!p.isIsOwned()){
+                hasProprietyToBuy = true;
+                break;
+            }
+        }
+        
+        if(hasProprietyToBuy){
+            ProprietiesBuy buy = new ProprietiesBuy(parent, true, 2,this);
+            buy.setVisible(true); 
+        }else{
+            showError(2);
+        }
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        ProprietiesBuy buy = new ProprietiesBuy(parent, true, 0,this);
-        buy.setVisible(true);
+        boolean hasProprietyToBuy = false;
+        
+        for(Propriety p:AppManager.INSTANCE.getProprieties()){
+            if(!p.isIsOwned()){
+                hasProprietyToBuy = true;
+                break;
+            }
+        }
+        
+        if(hasProprietyToBuy){
+            ProprietiesBuy buy = new ProprietiesBuy(parent, true, 0,this);
+            buy.setVisible(true); 
+        }else{
+            showError(2);
+        }
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        ShowPropriety show = new ShowPropriety(parent, true,0,this);
-        show.setVisible(true);
+        Player player = AppManager.INSTANCE.getPlayers(0);
+        
+        if(player.getProprieties().size() != 0){
+            ShowPropriety show = new ShowPropriety(parent, true,0,this);
+            show.setVisible(true);
+        }else{
+            showError(1);
+        }
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        ProprietiesBuy buy = new ProprietiesBuy(parent, true, 1,this);
-        buy.setVisible(true);
+        boolean hasProprietyToBuy = false;
+        
+        for(Propriety p:AppManager.INSTANCE.getProprieties()){
+            if(!p.isIsOwned()){
+                hasProprietyToBuy = true;
+                break;
+            }
+        }
+        
+        if(hasProprietyToBuy){
+            ProprietiesBuy buy = new ProprietiesBuy(parent, true, 1,this);
+            buy.setVisible(true); 
+        }else{
+            showError(2);
+        }
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-         ShowPropriety show = new ShowPropriety(parent, true,1,this);
-        show.setVisible(true);
+         Player player = AppManager.INSTANCE.getPlayers(1);
+        
+        if(player.getProprieties().size() != 0){
+            ShowPropriety show = new ShowPropriety(parent, true,1,this);
+            show.setVisible(true);
+        }else{
+            showError(1);
+        }
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
@@ -841,6 +900,22 @@ public class PlayersWindowThree extends javax.swing.JDialog {
             txtMoneyRentPlayer3.setText(String.format("%.2fM", rentPlayer3/ 1000000.0));
         }else{
             txtMoneyRentPlayer3.setText(String.format("%.2fK", rentPlayer3/ 1000.0));
+        }
+    }
+
+    private void showError(int erro) {
+        String message;
+        switch(erro){
+            case 1:
+                //Number format 
+                message ="Dont have proprieties to show details";
+                JOptionPane.showMessageDialog(this, message);
+            break;
+            case 2:
+                //Number format 
+                message ="All proprieties have owned";
+                JOptionPane.showMessageDialog(this, message);
+            break;
         }
     }
 }

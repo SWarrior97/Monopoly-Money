@@ -117,270 +117,278 @@ public class AddMoney extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String insertMoney = MoneyToAdd.getText();
-        float money;
-        switch(numberOfPlayers){
-            case 2:
-                if(insertMoney.contains("M")){
-                    money = Float.parseFloat(insertMoney.split("M")[0])* 1000000;
-                   //money = Integer.parseInt(insertMoney.split("M")[0])*1000000;
-                   
-                   if(money < 0){
-                        showError(3);
-                    }else{
-                        float actualMoney = 0;
+        if(insertMoney.isEmpty()){
+            showError(5);
+        }else{
+            if(!insertMoney.contains("M")&& !insertMoney.contains("K")){
+                showError(6);
+            }else{
+                float money;
+                switch(numberOfPlayers){
+                    case 2:
+                        if(insertMoney.contains("M")){
+                            money = Float.parseFloat(insertMoney.split("M")[0])* 1000000;
 
-                        switch(player){
-                            case 1:
-                            actualMoney = AppManager.INSTANCE.getPlayers(0).getMoney() + money;
-
-                            if(actualMoney < 0){
-                                showError(4);
+                           if(money < 0){
+                                showError(3);
                             }else{
-                                AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
-                                window.setCurrentMoneyPLayer1();
-                            }
-                            break;
-                            case 2:
-                            actualMoney = AppManager.INSTANCE.getPlayers(1).getMoney() + money;
+                                float actualMoney = 0;
 
-                            if(actualMoney < 0){
-                                showError(4);
+                                switch(player){
+                                    case 1:
+                                    actualMoney = AppManager.INSTANCE.getPlayers(0).getMoney() + money;
+
+                                    if(actualMoney < 0){
+                                        showError(4);
+                                    }else{
+                                        AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
+                                        window.setCurrentMoneyPLayer1();
+                                    }
+                                    break;
+                                    case 2:
+                                    actualMoney = AppManager.INSTANCE.getPlayers(1).getMoney() + money;
+
+                                    if(actualMoney < 0){
+                                        showError(4);
+                                    }else{
+                                        AppManager.INSTANCE.getPlayers(1).setMoney(actualMoney);
+                                        window.setCurrentMoneyPLayer2();
+                                    }
+                                    break;
+                                }
+                                closeWindow();
+                            }
+                        }else{
+                            money = Float.parseFloat(insertMoney.split("K")[0])*1000;
+                            System.out.println(money);
+                            float actualMoney = 0;
+
+                                switch(player){
+                                    case 1:
+                                    actualMoney = AppManager.INSTANCE.getPlayers(0).getMoney() + money;
+
+                                    if(actualMoney < 0){
+                                        showError(4);
+                                    }else{
+                                        AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
+                                        window.setCurrentMoneyPLayer1();
+                                    }
+                                    break;
+                                    case 2:
+                                    actualMoney = AppManager.INSTANCE.getPlayers(1).getMoney() + money;
+
+                                    if(actualMoney < 0){
+                                        showError(4);
+                                    }else{
+                                        AppManager.INSTANCE.getPlayers(1).setMoney(actualMoney);
+                                        window.setCurrentMoneyPLayer2();
+                                    }
+                                    break;
+                                }
+                                closeWindow();
+                            }
+                    break;
+                    case 3:
+                        if(insertMoney.contains("M")){
+                            money = Float.parseFloat(insertMoney.split("M")[0])*1000000;
+
+                            if(money < 0){
+                            showError(3);
+                        }else{
+                            float actualMoney = 0;
+
+                            switch(player){
+                                case 1:
+                                actualMoney = AppManager.INSTANCE.getPlayers(0).getMoney() + money;
+
+                                if(actualMoney < 0){
+                                    showError(4);
+                                }else{
+                                    AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
+                                    windowThree.setCurrentMoneyPLayer1();
+                                }
+                                break;
+                                case 2:
+                                actualMoney = AppManager.INSTANCE.getPlayers(1).getMoney() + money;
+
+                                if(actualMoney < 0){
+                                    showError(4);
+                                }else{
+                                    AppManager.INSTANCE.getPlayers(1).setMoney(actualMoney);
+                                    windowThree.setCurrentMoneyPLayer2();
+                                }
+                                break;
+                                case 3:
+                                actualMoney = AppManager.INSTANCE.getPlayers(2).getMoney() + money;
+
+                                if(actualMoney < 0){
+                                    showError(4);
+                                }else{
+                                    AppManager.INSTANCE.getPlayers(2).setMoney(actualMoney);
+                                     windowThree.setCurrentMoneyPLayer3();
+                                }
+                                break;
+                            }
+                            closeWindow();
+                        }
+                        }else{
+                            money = Float.parseFloat(insertMoney.split("K")[0])*1000;
+
+                            if(money < 0){
+                                showError(3);
                             }else{
-                                AppManager.INSTANCE.getPlayers(1).setMoney(actualMoney);
-                                window.setCurrentMoneyPLayer2();
+                                float actualMoney = 0;
+
+                                switch(player){
+                                    case 1:
+                                    actualMoney = AppManager.INSTANCE.getPlayers(0).getMoney() + money;
+
+                                    if(actualMoney < 0){
+                                        showError(4);
+                                    }else{
+                                        AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
+                                        windowThree.setCurrentMoneyPLayer1();
+                                    }
+                                    break;
+                                    case 2:
+                                    actualMoney = AppManager.INSTANCE.getPlayers(1).getMoney() + money;
+
+                                    if(actualMoney < 0){
+                                        showError(4);
+                                    }else{
+                                        AppManager.INSTANCE.getPlayers(1).setMoney(actualMoney);
+                                        windowThree.setCurrentMoneyPLayer2();
+                                    }
+                                    break;
+                                    case 3:
+                                    actualMoney = AppManager.INSTANCE.getPlayers(2).getMoney() + money;
+
+                                    if(actualMoney < 0){
+                                        showError(4);
+                                    }else{
+                                        AppManager.INSTANCE.getPlayers(2).setMoney(actualMoney);
+                                         windowThree.setCurrentMoneyPLayer3();
+                                    }
+                                    break;
+                                }
+                                closeWindow();
                             }
-                            break;
                         }
-                        closeWindow();
-                    }
-                }else{
-                    money = Float.parseFloat(insertMoney.split("K")[0])*1000;
-                    System.out.println(money);
-                    float actualMoney = 0;
 
-                        switch(player){
-                            case 1:
-                            actualMoney = AppManager.INSTANCE.getPlayers(0).getMoney() + money;
+                    break;
+                    case 4:
 
-                            if(actualMoney < 0){
-                                showError(4);
+                         if(insertMoney.contains("M")){
+                              money = Float.parseFloat(insertMoney.split("M")[0])*1000000;
+
+                              if(money < 0){
+                            showError(3);
+                        }else{
+                            float actualMoney = 0;
+
+                            switch(player){
+                                case 1:
+                                actualMoney = AppManager.INSTANCE.getPlayers(0).getMoney() + money;
+
+                                if(actualMoney < 0){
+                                    showError(4);
+                                }else{
+                                    AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
+                                    windowFour.setCurrentMoneyPLayer1();
+                                }
+                                break;
+                                case 2:
+                                actualMoney = AppManager.INSTANCE.getPlayers(1).getMoney() + money;
+
+                                if(actualMoney < 0){
+                                    showError(4);
+                                }else{
+                                    AppManager.INSTANCE.getPlayers(1).setMoney(actualMoney);
+                                    windowFour.setCurrentMoneyPLayer2();
+                                }
+                                break;
+                                case 3:
+                                actualMoney = AppManager.INSTANCE.getPlayers(2).getMoney() + money;
+
+                                if(actualMoney < 0){
+                                    showError(4);
+                                }else{
+                                    AppManager.INSTANCE.getPlayers(2).setMoney(actualMoney);
+                                     windowFour.setCurrentMoneyPLayer3();
+                                }
+                                break;
+                                case 4:
+                                    actualMoney = AppManager.INSTANCE.getPlayers(3).getMoney() + money;
+
+                                    if(actualMoney < 0){
+                                        showError(4);
+                                    }else{
+                                        AppManager.INSTANCE.getPlayers(3).setMoney(actualMoney);
+                                         windowFour.setCurrentMoneyPLayer4();
+                                    }
+                                break;
+                            }
+                            closeWindow();
+                        }
+                         }else{
+                                money = Float.parseFloat(insertMoney.split("K")[0])*1000;
+
+                              if(money < 0){
+                                showError(3);
                             }else{
-                                AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
-                                window.setCurrentMoneyPLayer1();
+                            float actualMoney = 0;
+
+                            switch(player){
+                                case 1:
+                                actualMoney = AppManager.INSTANCE.getPlayers(0).getMoney() + money;
+
+                                if(actualMoney < 0){
+                                    showError(4);
+                                }else{
+                                    AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
+                                    windowFour.setCurrentMoneyPLayer1();
+                                }
+                                break;
+                                case 2:
+                                actualMoney = AppManager.INSTANCE.getPlayers(1).getMoney() + money;
+
+                                if(actualMoney < 0){
+                                    showError(4);
+                                }else{
+                                    AppManager.INSTANCE.getPlayers(1).setMoney(actualMoney);
+                                    windowFour.setCurrentMoneyPLayer2();
+                                }
+                                break;
+                                case 3:
+                                actualMoney = AppManager.INSTANCE.getPlayers(2).getMoney() + money;
+
+                                if(actualMoney < 0){
+                                    showError(4);
+                                }else{
+                                    AppManager.INSTANCE.getPlayers(2).setMoney(actualMoney);
+                                     windowFour.setCurrentMoneyPLayer3();
+                                }
+                                break;
+                                case 4:
+                                    actualMoney = AppManager.INSTANCE.getPlayers(3).getMoney() + money;
+
+                                    if(actualMoney < 0){
+                                        showError(4);
+                                    }else{
+                                        AppManager.INSTANCE.getPlayers(3).setMoney(actualMoney);
+                                         windowFour.setCurrentMoneyPLayer4();
+                                    }
+                                break;
                             }
-                            break;
-                            case 2:
-                            actualMoney = AppManager.INSTANCE.getPlayers(1).getMoney() + money;
-
-                            if(actualMoney < 0){
-                                showError(4);
-                            }else{
-                                AppManager.INSTANCE.getPlayers(1).setMoney(actualMoney);
-                                window.setCurrentMoneyPLayer2();
-                            }
-                            break;
+                            closeWindow();
                         }
-                        closeWindow();
-                    }
-            break;
-            case 3:
-                if(insertMoney.contains("M")){
-                    money = Float.parseFloat(insertMoney.split("M")[0])*1000000;
-                    
-                    if(money < 0){
-                    showError(3);
-                }else{
-                    float actualMoney = 0;
+                         }
 
-                    switch(player){
-                        case 1:
-                        actualMoney = AppManager.INSTANCE.getPlayers(0).getMoney() + money;
 
-                        if(actualMoney < 0){
-                            showError(4);
-                        }else{
-                            AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
-                            windowThree.setCurrentMoneyPLayer1();
-                        }
-                        break;
-                        case 2:
-                        actualMoney = AppManager.INSTANCE.getPlayers(1).getMoney() + money;
-
-                        if(actualMoney < 0){
-                            showError(4);
-                        }else{
-                            AppManager.INSTANCE.getPlayers(1).setMoney(actualMoney);
-                            windowThree.setCurrentMoneyPLayer2();
-                        }
-                        break;
-                        case 3:
-                        actualMoney = AppManager.INSTANCE.getPlayers(2).getMoney() + money;
-
-                        if(actualMoney < 0){
-                            showError(4);
-                        }else{
-                            AppManager.INSTANCE.getPlayers(2).setMoney(actualMoney);
-                             windowThree.setCurrentMoneyPLayer3();
-                        }
-                        break;
-                    }
-                    closeWindow();
-                }
-                }else{
-                    money = Float.parseFloat(insertMoney.split("K")[0])*1000;
-                    
-                    if(money < 0){
-                        showError(3);
-                    }else{
-                        float actualMoney = 0;
-
-                        switch(player){
-                            case 1:
-                            actualMoney = AppManager.INSTANCE.getPlayers(0).getMoney() + money;
-
-                            if(actualMoney < 0){
-                                showError(4);
-                            }else{
-                                AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
-                                windowThree.setCurrentMoneyPLayer1();
-                            }
-                            break;
-                            case 2:
-                            actualMoney = AppManager.INSTANCE.getPlayers(1).getMoney() + money;
-
-                            if(actualMoney < 0){
-                                showError(4);
-                            }else{
-                                AppManager.INSTANCE.getPlayers(1).setMoney(actualMoney);
-                                windowThree.setCurrentMoneyPLayer2();
-                            }
-                            break;
-                            case 3:
-                            actualMoney = AppManager.INSTANCE.getPlayers(2).getMoney() + money;
-
-                            if(actualMoney < 0){
-                                showError(4);
-                            }else{
-                                AppManager.INSTANCE.getPlayers(2).setMoney(actualMoney);
-                                 windowThree.setCurrentMoneyPLayer3();
-                            }
-                            break;
-                        }
-                        closeWindow();
-                    }
-                }
-
-            break;
-            case 4:
-                
-                 if(insertMoney.contains("M")){
-                      money = Float.parseFloat(insertMoney.split("M")[0])*1000000;
-                      
-                      if(money < 0){
-                    showError(3);
-                }else{
-                    float actualMoney = 0;
-
-                    switch(player){
-                        case 1:
-                        actualMoney = AppManager.INSTANCE.getPlayers(0).getMoney() + money;
-
-                        if(actualMoney < 0){
-                            showError(4);
-                        }else{
-                            AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
-                            windowFour.setCurrentMoneyPLayer1();
-                        }
-                        break;
-                        case 2:
-                        actualMoney = AppManager.INSTANCE.getPlayers(1).getMoney() + money;
-
-                        if(actualMoney < 0){
-                            showError(4);
-                        }else{
-                            AppManager.INSTANCE.getPlayers(1).setMoney(actualMoney);
-                            windowFour.setCurrentMoneyPLayer2();
-                        }
-                        break;
-                        case 3:
-                        actualMoney = AppManager.INSTANCE.getPlayers(2).getMoney() + money;
-
-                        if(actualMoney < 0){
-                            showError(4);
-                        }else{
-                            AppManager.INSTANCE.getPlayers(2).setMoney(actualMoney);
-                             windowFour.setCurrentMoneyPLayer3();
-                        }
-                        break;
-                        case 4:
-                            actualMoney = AppManager.INSTANCE.getPlayers(3).getMoney() + money;
-
-                            if(actualMoney < 0){
-                                showError(4);
-                            }else{
-                                AppManager.INSTANCE.getPlayers(3).setMoney(actualMoney);
-                                 windowFour.setCurrentMoneyPLayer4();
-                            }
-                        break;
-                    }
-                    closeWindow();
-                }
-                 }else{
-                        money = Float.parseFloat(insertMoney.split("K")[0])*1000;
-                      
-                      if(money < 0){
-                        showError(3);
-                    }else{
-                    float actualMoney = 0;
-
-                    switch(player){
-                        case 1:
-                        actualMoney = AppManager.INSTANCE.getPlayers(0).getMoney() + money;
-
-                        if(actualMoney < 0){
-                            showError(4);
-                        }else{
-                            AppManager.INSTANCE.getPlayers(0).setMoney(actualMoney);
-                            windowFour.setCurrentMoneyPLayer1();
-                        }
-                        break;
-                        case 2:
-                        actualMoney = AppManager.INSTANCE.getPlayers(1).getMoney() + money;
-
-                        if(actualMoney < 0){
-                            showError(4);
-                        }else{
-                            AppManager.INSTANCE.getPlayers(1).setMoney(actualMoney);
-                            windowFour.setCurrentMoneyPLayer2();
-                        }
-                        break;
-                        case 3:
-                        actualMoney = AppManager.INSTANCE.getPlayers(2).getMoney() + money;
-
-                        if(actualMoney < 0){
-                            showError(4);
-                        }else{
-                            AppManager.INSTANCE.getPlayers(2).setMoney(actualMoney);
-                             windowFour.setCurrentMoneyPLayer3();
-                        }
-                        break;
-                        case 4:
-                            actualMoney = AppManager.INSTANCE.getPlayers(3).getMoney() + money;
-
-                            if(actualMoney < 0){
-                                showError(4);
-                            }else{
-                                AppManager.INSTANCE.getPlayers(3).setMoney(actualMoney);
-                                 windowFour.setCurrentMoneyPLayer4();
-                            }
-                        break;
-                    }
-                    closeWindow();
-                }
-                 }
-
-                
-            break;
+                    break;
+                } 
+            }
+            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -438,6 +446,16 @@ private void init() {
             case 4:
                 //Invalid money
                 message ="PLayer can't have negative money";
+                JOptionPane.showMessageDialog(this, message);
+            break;
+            case 5:
+                //Invalid money
+                message ="Please insert a quantity";
+                JOptionPane.showMessageDialog(this, message);
+            break;
+            case 6:
+                //Invalid money
+                message ="Please insert a quantity with million(M) ou milliar(K)";
                 JOptionPane.showMessageDialog(this, message);
             break;
         } 
