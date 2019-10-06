@@ -9,6 +9,7 @@ import Model.AppManager;
 import Propriety.ProprietyCard;
 import javax.swing.JOptionPane;
 import View.FourPlayer.MainWindowFourPlayer;
+import View.SixPlayer.MainWindowSixPlayer;
 import View.TwoPlayer.MainWindowTwoPlayer;
 import View.ThreePlayer.MainWindowThreePlayer;
 
@@ -85,7 +86,7 @@ public class MainWindow extends javax.swing.JFrame {
         try{
             int numberOfPlayers = Integer.parseInt(insertText);
             
-            if(numberOfPlayers < 2 || numberOfPlayers >4){
+            if(numberOfPlayers < 2 || numberOfPlayers >6){
                 showError(3);
             }else{
                 switch(numberOfPlayers){
@@ -101,6 +102,11 @@ public class MainWindow extends javax.swing.JFrame {
                         MainWindowFourPlayer fourPlayer = new MainWindowFourPlayer(this,true);
                         fourPlayer.setVisible(true);
                         break;
+                    case 6:
+                        MainWindowSixPlayer sixPlayer = new MainWindowSixPlayer(this,true);
+                        sixPlayer.setVisible(true);
+                        break;
+                        
                 }
             }
         }catch(NumberFormatException e){

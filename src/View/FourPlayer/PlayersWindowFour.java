@@ -147,6 +147,12 @@ public class PlayersWindowFour extends javax.swing.JDialog {
             }
         });
 
+        player2nameThree.setText("lbl");
+
+        player1nameThree.setText("lbl");
+
+        player3nameThree.setText("lbl");
+
         jLabel3.setText("Current Money:");
 
         CurrentMoneyPlayer3Three.setEditable(false);
@@ -164,6 +170,8 @@ public class PlayersWindowFour extends javax.swing.JDialog {
                 jButton7ActionPerformed(evt);
             }
         });
+
+        player4name.setText("lbl");
 
         jLabel4.setText("Current Money:");
 

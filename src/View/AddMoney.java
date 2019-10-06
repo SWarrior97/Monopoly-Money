@@ -7,6 +7,7 @@ package View;
 
 import Model.AppManager;
 import View.FourPlayer.PlayersWindowFour;
+import View.SixPlayer.PlayersWindowSix;
 import View.ThreePlayer.PlayersWindowThree;
 import View.TwoPlayer.PlayersWindow;
 import javax.swing.JOptionPane;
@@ -21,6 +22,7 @@ public class AddMoney extends javax.swing.JDialog {
     private PlayersWindow window;
     private PlayersWindowThree windowThree;
     private PlayersWindowFour windowFour;
+    private PlayersWindowSix windowSix;
     /**
      * Creates new form AddMoney
      */
@@ -50,6 +52,15 @@ public class AddMoney extends javax.swing.JDialog {
         this.numberOfPlayers = numberOfPlayers;
         init();
     }
+    
+    public AddMoney(java.awt.Frame parent, boolean modal,int player,PlayersWindowSix window,int numberOfPlayers) {
+        super(parent, modal);
+        initComponents();
+        this.player=player;
+        this.windowSix=window;
+        this.numberOfPlayers = numberOfPlayers;
+        init();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,6 +77,8 @@ public class AddMoney extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        PlayerToAddMoney.setText("lbl");
 
         Cancel.setText("Cancel");
         Cancel.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +103,7 @@ public class AddMoney extends javax.swing.JDialog {
                 .addComponent(PlayerToAddMoney)
                 .addGap(89, 89, 89)
                 .addComponent(MoneyToAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)

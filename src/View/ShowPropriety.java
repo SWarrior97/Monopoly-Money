@@ -14,6 +14,7 @@ import Propriety.InternetService;
 import Propriety.PhoneService;
 import Propriety.SellPropriety;
 import View.FourPlayer.PlayersWindowFour;
+import View.SixPlayer.PlayersWindowSix;
 import View.ThreePlayer.PlayersWindowThree;
 import View.TwoPlayer.PlayersWindow;
 import java.util.LinkedList;
@@ -31,6 +32,7 @@ public class ShowPropriety extends javax.swing.JDialog {
     private PlayersWindow window;
     private PlayersWindowThree windowThree;
     private PlayersWindowFour windowFour;
+    private PlayersWindowSix windowSix;
     private int position;
     private float money;
     /**
@@ -63,6 +65,16 @@ public class ShowPropriety extends javax.swing.JDialog {
         this.position=position;
         this.player = AppManager.INSTANCE.getPlayers(position);
         this.windowFour = windowFour;
+        init();
+    }
+    
+    public ShowPropriety(java.awt.Frame parent, boolean modal,int position,PlayersWindowSix windowSix) {
+        super(parent, modal);
+        initComponents();
+        this.parent = parent;
+        this.position=position;
+        this.player = AppManager.INSTANCE.getPlayers(position);
+        this.windowSix = windowSix;
         init();
     }
 
@@ -501,7 +513,7 @@ public class ShowPropriety extends javax.swing.JDialog {
         Propriety propriety = null;
         String color = null;
         int count = 0;
-        int countHouse=0;
+        int countHouse=0,countHotel = 0;
         for(Propriety p:AppManager.INSTANCE.getProprieties()){
                 if(p.getName().equals(name)){
                     propriety = p;
@@ -518,6 +530,9 @@ public class ShowPropriety extends javax.swing.JDialog {
                     if(p.getNumberOfHouse()>0){
                         countHouse++;
                     }
+                    if(p.isHasHotel()){
+                        countHotel++;
+                    }
                 }
             }
             
@@ -530,7 +545,7 @@ public class ShowPropriety extends javax.swing.JDialog {
                     break;
                 case "Castanho":
                     if(count == 2){
-                        if(countHouse >0 ){
+                        if(countHouse >0 || countHotel >0){
                             showError(8);
                         }else{
                             propriety.setIsMortgage(true);
@@ -547,7 +562,7 @@ public class ShowPropriety extends javax.swing.JDialog {
                     break;
                 case "Azul Escuro":
                     if(count == 2){
-                        if(countHouse >0 ){
+                        if(countHouse >0 || countHotel >0){
                             showError(8);
                         }else{
                             propriety.setIsMortgage(true);
@@ -564,7 +579,7 @@ public class ShowPropriety extends javax.swing.JDialog {
                     break;
                 default:
                     if(count == 3){
-                        if(countHouse >0 ){
+                        if(countHouse >0 || countHotel >0){
                             showError(8);
                         }else{
                             propriety.setIsMortgage(true);
@@ -631,6 +646,7 @@ public class ShowPropriety extends javax.swing.JDialog {
                 if(p.isHasHotel()){
                     player.setMoney(player.getMoney() + p.getBuildHouse());
                     p.setHasHotel(false);
+                    p.setNumberOfHouse(4);
                     updateWindow();
                     setPrice();
                     setHotel();
@@ -973,13 +989,15 @@ public class ShowPropriety extends javax.swing.JDialog {
                 windowThree.setCurrentMoneyPLayer3();
 
 
-            } else{
+            } else if(windowFour != null){
                 //janela four
                 windowFour.setCurrentMoneyPLayer1();
                 windowFour.setCurrentMoneyPLayer2();
                 windowFour.setCurrentMoneyPLayer3();
                 windowFour.setCurrentMoneyPLayer4();
                 
+            }else{
+                windowSix.setAllCurrentMoney();
             }
          }else{
             //janela dois
