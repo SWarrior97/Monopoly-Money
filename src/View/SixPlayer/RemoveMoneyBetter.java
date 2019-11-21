@@ -7,6 +7,7 @@ package View.SixPlayer;
 
 import Model.AppManager;
 import Model.Player;
+import View.FivePlayer.PlayersWindowFive;
 import View.FourPlayer.PlayersWindowFour;
 import View.ThreePlayer.PlayersWindowThree;
 import View.TwoPlayer.PlayersWindow;
@@ -20,6 +21,7 @@ public class RemoveMoneyBetter extends javax.swing.JDialog {
     private PlayersWindow window;
     private PlayersWindowThree windowThree;
     private PlayersWindowFour windowFour;
+    private PlayersWindowFive windowFive;
     private PlayersWindowSix windowSix;
     private int playerNumber;
     private Player player;
@@ -30,6 +32,15 @@ public class RemoveMoneyBetter extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.windowSix = windowSix;
+        this.playerNumber = playerNumber;
+        this.player = AppManager.INSTANCE.getPlayers(playerNumber-1);
+        init();
+    }
+    
+    public RemoveMoneyBetter(java.awt.Frame parent, boolean modal,int playerNumber,PlayersWindowFive windowFive) {
+        super(parent, modal);
+        initComponents();
+        this.windowFive = windowFive;
         this.playerNumber = playerNumber;
         this.player = AppManager.INSTANCE.getPlayers(playerNumber-1);
         init();
@@ -122,7 +133,7 @@ public class RemoveMoneyBetter extends javax.swing.JDialog {
                         showError(4);
                     }else{
                         player.setMoney(actualMoney);
-                        windowSix.setAllCurrentMoney();
+                        verifyWindowToUpdate();
                         closeWindow();
                     }
                  }else{
@@ -133,7 +144,7 @@ public class RemoveMoneyBetter extends javax.swing.JDialog {
                         showError(4);
                     }else{
                         player.setMoney(actualMoney);
-                        windowSix.setAllCurrentMoney(); 
+                        verifyWindowToUpdate();
                         closeWindow();
                     }
                  }
@@ -160,6 +171,29 @@ public class RemoveMoneyBetter extends javax.swing.JDialog {
         private void closeWindow() {
             this.dispose();
         }
+        
+        private void verifyWindowToUpdate() {
+        if(window == null){
+            if(windowThree != null){
+                 windowThree.setCurrentMoneyPLayer1();
+                 windowThree.setCurrentMoneyPLayer2();
+                 windowThree.setCurrentMoneyPLayer3();
+            } else if(windowFour != null){
+                //janela four
+                windowFour.setCurrentMoneyPLayer1();
+                windowFour.setCurrentMoneyPLayer2();
+                windowFour.setCurrentMoneyPLayer3();
+                windowFour.setCurrentMoneyPLayer4();
+               }else if(windowSix != null){
+                   windowSix.setAllCurrentMoney();
+               }else{
+                   windowFive.setAllCurrentMoney();
+               }
+            }else{
+                window.setCurrentMoneyPLayer1();
+                window.setCurrentMoneyPLayer2();
+            }
+    }
 
         private void showError(int erro) {
             String message;

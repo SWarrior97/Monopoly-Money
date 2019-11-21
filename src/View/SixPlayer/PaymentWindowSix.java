@@ -7,6 +7,7 @@ package View.SixPlayer;
 
 import Model.AppManager;
 import Model.Player;
+import View.FivePlayer.PlayersWindowFive;
 import View.FourPlayer.PlayersWindowFour;
 import View.ThreePlayer.PlayersWindowThree;
 import View.TwoPlayer.PlayersWindow;
@@ -22,6 +23,7 @@ public class PaymentWindowSix extends javax.swing.JDialog {
     private PlayersWindow window;
     private PlayersWindowThree windowThree;
     private PlayersWindowFour windowFour;
+    private PlayersWindowFive windowFive;
     private PlayersWindowSix windowSix;
     private int playerNumber;
     private Player player;
@@ -32,6 +34,15 @@ public class PaymentWindowSix extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.windowSix = windowSix;
+        this.playerNumber = player;
+        this.player = AppManager.INSTANCE.getPlayers(player-1);
+        init();
+    }
+    
+    public PaymentWindowSix(java.awt.Frame parent, boolean modal,int player,PlayersWindowFive windowFive) {
+        super(parent, modal);
+        initComponents();
+        this.windowFive = windowFive;
         this.playerNumber = player;
         this.player = AppManager.INSTANCE.getPlayers(player-1);
         init();
@@ -147,8 +158,15 @@ public class PaymentWindowSix extends javax.swing.JDialog {
         }else{
             receiver.setMoney(receiver.getMoney() + quantity);
             player.setMoney(player.getMoney() - quantity);
-            windowSix.setAllCurrentMoney(); 
-            windowSix.setRentMoney(receiver.getNumber(),quantity);
+            if(windowSix != null){
+                windowSix.setAllCurrentMoney(); 
+                windowSix.setRentMoney(receiver.getNumber(),quantity);
+            }else{
+                windowFive.setAllCurrentMoney(); 
+                windowFive.setRentMoney(receiver.getNumber(),quantity);
+            }
+            
+           
             closeWindow();
        }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -214,6 +232,29 @@ public class PaymentWindowSix extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, message);
             break;
         } 
+    }
+    
+    private void verifyWindowToUpdate() {
+        if(window == null){
+            if(windowThree != null){
+                 windowThree.setCurrentMoneyPLayer1();
+                 windowThree.setCurrentMoneyPLayer2();
+                 windowThree.setCurrentMoneyPLayer3();
+            } else if(windowFour != null){
+                //janela four
+                windowFour.setCurrentMoneyPLayer1();
+                windowFour.setCurrentMoneyPLayer2();
+                windowFour.setCurrentMoneyPLayer3();
+                windowFour.setCurrentMoneyPLayer4();
+               }else if(windowSix != null){
+                   windowSix.setAllCurrentMoney();
+               }else{
+                   windowFive.setAllCurrentMoney();
+               }
+            }else{
+                window.setCurrentMoneyPLayer1();
+                window.setCurrentMoneyPLayer2();
+            }
     }
     
 }

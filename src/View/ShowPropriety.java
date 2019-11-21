@@ -13,6 +13,7 @@ import Propriety.ProprietyCard;
 import Propriety.InternetService;
 import Propriety.PhoneService;
 import Propriety.SellPropriety;
+import View.FivePlayer.PlayersWindowFive;
 import View.FourPlayer.PlayersWindowFour;
 import View.SixPlayer.PlayersWindowSix;
 import View.ThreePlayer.PlayersWindowThree;
@@ -32,6 +33,7 @@ public class ShowPropriety extends javax.swing.JDialog {
     private PlayersWindow window;
     private PlayersWindowThree windowThree;
     private PlayersWindowFour windowFour;
+    private PlayersWindowFive windowFive;
     private PlayersWindowSix windowSix;
     private int position;
     private float money;
@@ -75,6 +77,16 @@ public class ShowPropriety extends javax.swing.JDialog {
         this.position=position;
         this.player = AppManager.INSTANCE.getPlayers(position);
         this.windowSix = windowSix;
+        init();
+    }
+    
+    public ShowPropriety(java.awt.Frame parent, boolean modal,int position,PlayersWindowFive windowFive) {
+        super(parent, modal);
+        initComponents();
+        this.parent = parent;
+        this.position=position;
+        this.player = AppManager.INSTANCE.getPlayers(position);
+        this.windowFive = windowFive;
         init();
     }
 

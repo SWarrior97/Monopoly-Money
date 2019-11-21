@@ -7,6 +7,7 @@ package View;
 
 import Model.AppManager;
 import Propriety.ProprietyCard;
+import View.FivePlayer.MainWindowFivePlayer;
 import javax.swing.JOptionPane;
 import View.FourPlayer.MainWindowFourPlayer;
 import View.SixPlayer.MainWindowSixPlayer;
@@ -101,6 +102,10 @@ public class MainWindow extends javax.swing.JFrame {
                     case 4:
                         MainWindowFourPlayer fourPlayer = new MainWindowFourPlayer(this,true);
                         fourPlayer.setVisible(true);
+                        break;
+                    case 5:
+                        MainWindowFivePlayer fivePlayer = new MainWindowFivePlayer(this,true);
+                        fivePlayer.setVisible(true);
                         break;
                     case 6:
                         MainWindowSixPlayer sixPlayer = new MainWindowSixPlayer(this,true);

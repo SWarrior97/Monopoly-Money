@@ -9,6 +9,7 @@ import Model.AppManager;
 import Model.Player;
 import Model.Propriety;
 import Propriety.ProprietyCard;
+import View.FivePlayer.PlayersWindowFive;
 import View.FourPlayer.PlayersWindowFour;
 import View.SixPlayer.PlayersWindowSix;
 import View.ThreePlayer.PlayersWindowThree;
@@ -31,7 +32,8 @@ public class ProprietiesBuy extends javax.swing.JDialog {
     private PlayersWindow window;
     private PlayersWindowThree windowThree;
     private PlayersWindowFour windowFour;
-     private PlayersWindowSix windowSix;
+    private PlayersWindowSix windowSix;
+    private PlayersWindowFive windowFive;
 
     /**
      * Creates new form ProprietiesBuy
@@ -73,6 +75,16 @@ public class ProprietiesBuy extends javax.swing.JDialog {
         this.position = position;
         this.parent = parent;
         this.windowSix=windowSix;
+        this.player = AppManager.INSTANCE.getPlayers(position);
+        init();
+    }
+    
+    public ProprietiesBuy(java.awt.Frame parent, boolean modal,int position,PlayersWindowFive windowSix) {
+        super(parent, modal);
+        initComponents();
+        this.position = position;
+        this.parent = parent;
+        this.windowFive=windowSix;
         this.player = AppManager.INSTANCE.getPlayers(position);
         init();
     }
@@ -250,8 +262,10 @@ public class ProprietiesBuy extends javax.swing.JDialog {
                    windowFour.setCurrentMoneyPLayer2();
                    windowFour.setCurrentMoneyPLayer3();
                    windowFour.setCurrentMoneyPLayer4();
-               }else{
+               }else if(windowSix != null){
                    windowSix.setAllCurrentMoney();
+               }else{
+                   windowFive.setAllCurrentMoney();
                }
             }else{
                 window.setCurrentMoneyPLayer1();
