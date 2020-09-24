@@ -5,8 +5,12 @@
  */
 package View;
 
+import Model.AppManager;
+import Propriety.ProprietyCard;
+import View.FivePlayer.MainWindowFivePlayer;
 import javax.swing.JOptionPane;
 import View.FourPlayer.MainWindowFourPlayer;
+import View.SixPlayer.MainWindowSixPlayer;
 import View.TwoPlayer.MainWindowTwoPlayer;
 import View.ThreePlayer.MainWindowThreePlayer;
 
@@ -52,23 +56,26 @@ public class MainWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtNumberOfPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addGap(144, 144, 144)
                 .addComponent(jButton1)
-                .addContainerGap())
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtNumberOfPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(txtNumberOfPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -80,7 +87,7 @@ public class MainWindow extends javax.swing.JFrame {
         try{
             int numberOfPlayers = Integer.parseInt(insertText);
             
-            if(numberOfPlayers < 2 || numberOfPlayers >4){
+            if(numberOfPlayers < 2 || numberOfPlayers >6){
                 showError(3);
             }else{
                 switch(numberOfPlayers){
@@ -96,6 +103,15 @@ public class MainWindow extends javax.swing.JFrame {
                         MainWindowFourPlayer fourPlayer = new MainWindowFourPlayer(this,true);
                         fourPlayer.setVisible(true);
                         break;
+                    case 5:
+                        MainWindowFivePlayer fivePlayer = new MainWindowFivePlayer(this,true);
+                        fivePlayer.setVisible(true);
+                        break;
+                    case 6:
+                        MainWindowSixPlayer sixPlayer = new MainWindowSixPlayer(this,true);
+                        sixPlayer.setVisible(true);
+                        break;
+                        
                 }
             }
         }catch(NumberFormatException e){

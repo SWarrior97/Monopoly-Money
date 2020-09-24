@@ -52,8 +52,8 @@ public class PaymentWindowThree extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblPayer = new javax.swing.JLabel();
+        lblReceiver = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtPayer = new javax.swing.JTextField();
         txtQuantity = new javax.swing.JTextField();
@@ -63,9 +63,9 @@ public class PaymentWindowThree extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Payer:");
+        lblPayer.setText("Payer:");
 
-        jLabel2.setText("Receiver:");
+        lblReceiver.setText("Receiver:");
 
         jLabel3.setText("Quantity:");
 
@@ -93,12 +93,12 @@ public class PaymentWindowThree extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblPayer)
                         .addGap(42, 42, 42)
                         .addComponent(txtPayer, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(lblReceiver)
                             .addComponent(jLabel3))
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -117,11 +117,11 @@ public class PaymentWindowThree extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblPayer)
                     .addComponent(txtPayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblReceiver)
                     .addComponent(cbPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -143,11 +143,12 @@ public class PaymentWindowThree extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String insertText = txtQuantity.getText();
+        float quantity;
+        float AuxQuantity;
+        float money;
         
-        try{
-            int quantity = Integer.parseInt(insertText);
-            int AuxQuantity;
-            int money;
+         if(insertText.contains("M")){
+            quantity = Float.parseFloat(insertText.split("M")[0])* 1000000;
             
             if(quantity <0){
                 showError(3);
@@ -257,11 +258,122 @@ public class PaymentWindowThree extends javax.swing.JDialog {
                     break;
                }
             }
-        }catch(NumberFormatException e){
-            showError(1);
-        }catch(Exception e){
-            showError(2);
-        }
+         }else{
+             quantity = Float.parseFloat(insertText.split("K")[0])* 1000;
+             
+             if(quantity <0){
+                showError(3);
+            }else{
+               switch(player){
+                   case 1:
+                       AuxQuantity = AppManager.INSTANCE.getPlayers(0).getMoney() - quantity;
+               
+                        if(AuxQuantity<0){
+                            showError(4);
+                        }else{
+                            Player p = (Player) cbPlayer.getSelectedItem();
+                            money = AppManager.INSTANCE.getPlayers(p.getNumber()-1).getMoney() +quantity;
+                            AppManager.INSTANCE.getPlayers(0).setMoney(AuxQuantity);
+                            AppManager.INSTANCE.getPlayers(p.getNumber()-1).setMoney(money);
+                            if(window == null){
+                                windowFour.setCurrentMoneyPLayer1();
+                                windowFour.setCurrentMoneyPLayer2();
+                                windowFour.setCurrentMoneyPLayer3();
+                                windowFour.setCurrentMoneyPLayer4();
+                                
+                                windowFour.setRentMoney(p.getNumber(),quantity);
+                            }else{
+                                window.setCurrentMoneyPLayer1();
+                                window.setCurrentMoneyPLayer2();
+                                window.setCurrentMoneyPLayer3();
+                                
+                                
+                                window.setRentMoney(p.getNumber(),quantity);
+                            }
+                            closeWindow();
+                        }
+                    break;
+                    case 2:
+                        AuxQuantity = AppManager.INSTANCE.getPlayers(1).getMoney() - quantity;
+               
+                        if(AuxQuantity<0){
+                            showError(4);
+                        }else{
+                            Player p = (Player) cbPlayer.getSelectedItem();
+                            money = AppManager.INSTANCE.getPlayers(p.getNumber()-1).getMoney() +quantity;
+                            AppManager.INSTANCE.getPlayers(1).setMoney(AuxQuantity);
+                            AppManager.INSTANCE.getPlayers(p.getNumber()-1).setMoney(money);
+                            if(window == null){
+                                windowFour.setCurrentMoneyPLayer1();
+                                windowFour.setCurrentMoneyPLayer2();
+                                windowFour.setCurrentMoneyPLayer3();
+                                windowFour.setCurrentMoneyPLayer4();
+                                
+                                windowFour.setRentMoney(p.getNumber(),quantity);
+                            }else{
+                                window.setCurrentMoneyPLayer1();
+                                window.setCurrentMoneyPLayer2();
+                                window.setCurrentMoneyPLayer3();
+                                
+                                window.setRentMoney(p.getNumber(),quantity);
+                            }
+                            closeWindow();
+                        }
+                    break;
+                    case 3:
+                        AuxQuantity = AppManager.INSTANCE.getPlayers(2).getMoney() - quantity;
+
+                        if(AuxQuantity<0){
+                            showError(4);
+                        }else{
+                            Player p = (Player) cbPlayer.getSelectedItem();
+                            money = AppManager.INSTANCE.getPlayers(p.getNumber()-1).getMoney() +quantity;
+                            AppManager.INSTANCE.getPlayers(2).setMoney(AuxQuantity);
+                            AppManager.INSTANCE.getPlayers(p.getNumber()-1).setMoney(money);
+                            if(window == null){
+                                windowFour.setCurrentMoneyPLayer1();
+                                windowFour.setCurrentMoneyPLayer2();
+                                windowFour.setCurrentMoneyPLayer3();
+                                windowFour.setCurrentMoneyPLayer4();
+                                
+                                windowFour.setRentMoney(p.getNumber(),quantity);
+                            }else{
+                                window.setCurrentMoneyPLayer1();
+                                window.setCurrentMoneyPLayer2();
+                                window.setCurrentMoneyPLayer3();
+                                
+                                window.setRentMoney(p.getNumber(),quantity);
+                            }
+                            closeWindow();
+                        }
+                    break;
+                    case 4:
+                        AuxQuantity = AppManager.INSTANCE.getPlayers(3).getMoney() - quantity;
+               
+                        if(AuxQuantity<0){
+                            showError(4);
+                        }else{
+                            Player p = (Player) cbPlayer.getSelectedItem();
+                            money = AppManager.INSTANCE.getPlayers(p.getNumber()-1).getMoney() +quantity;
+                            AppManager.INSTANCE.getPlayers(3).setMoney(AuxQuantity);
+                            AppManager.INSTANCE.getPlayers(p.getNumber()-1).setMoney(money);
+                            windowFour.setCurrentMoneyPLayer1();
+                            windowFour.setCurrentMoneyPLayer2();
+                            windowFour.setCurrentMoneyPLayer3();
+                            windowFour.setCurrentMoneyPLayer4();
+                            
+                            windowFour.setRentMoney(p.getNumber(),quantity);
+                            
+                            closeWindow();
+                        }
+                    break;
+               }
+            }
+         }
+        
+            
+            
+            
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -273,9 +385,9 @@ public class PaymentWindowThree extends javax.swing.JDialog {
     private javax.swing.JComboBox cbPlayer;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblPayer;
+    private javax.swing.JLabel lblReceiver;
     private javax.swing.JTextField txtPayer;
     private javax.swing.JTextField txtQuantity;
     // End of variables declaration//GEN-END:variables
@@ -342,4 +454,6 @@ public class PaymentWindowThree extends javax.swing.JDialog {
             break;
         } 
     }
+
+  
 }

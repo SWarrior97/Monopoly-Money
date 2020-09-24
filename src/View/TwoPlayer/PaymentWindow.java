@@ -130,11 +130,12 @@ public class PaymentWindow extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String insertText = txtQuantity.getText();
+        float quantity;
+        float AuxQuantity;
+        float money;
         
-        try{
-            int quantity = Integer.parseInt(insertText);
-            int AuxQuantity;
-            int money;
+        if(insertText.contains("M")){
+            quantity = Float.parseFloat(insertText.split("M")[0])* 1000000;
             
             if(quantity <0){
                 showError(3);
@@ -173,10 +174,46 @@ public class PaymentWindow extends javax.swing.JDialog {
                     break;
                }
             }
-        }catch(NumberFormatException e){
-            showError(1);
-        }catch(Exception e){
-            showError(2);
+        }else{
+            quantity = Float.parseFloat(insertText.split("K")[0])* 1000;
+            
+            if(quantity <0){
+                showError(3);
+            }else{
+               switch(player){
+                   case 1:
+                       AuxQuantity = AppManager.INSTANCE.getPlayers(0).getMoney() - quantity;
+               
+                        if(AuxQuantity<0){
+                            showError(4);
+                        }else{
+                            money = AppManager.INSTANCE.getPlayers(1).getMoney() +quantity;
+                            AppManager.INSTANCE.getPlayers(0).setMoney(AuxQuantity);
+                            AppManager.INSTANCE.getPlayers(1).setMoney(money);
+                            window.setCurrentMoneyPLayer1();
+                            window.setCurrentMoneyPLayer2();
+                            window.setRentMoney(2,quantity);
+                            closeWindow();
+                        }
+                    break;
+                    case 2:
+                        AuxQuantity = AppManager.INSTANCE.getPlayers(1).getMoney() - quantity;
+               
+                        if(AuxQuantity<0){
+                            showError(4);
+                        }else{
+                            
+                            money = AppManager.INSTANCE.getPlayers(0).getMoney() +quantity;
+                            AppManager.INSTANCE.getPlayers(1).setMoney(AuxQuantity);
+                            AppManager.INSTANCE.getPlayers(0).setMoney(money);
+                            window.setCurrentMoneyPLayer1();
+                            window.setCurrentMoneyPLayer2();
+                            window.setRentMoney(1,quantity);
+                            closeWindow();
+                        }
+                    break;
+               }
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
